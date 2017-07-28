@@ -7,7 +7,7 @@ import toggleEdit from './signals/toggleEdit';
 export default {
     state: {
       currentPage: "frontPage",
-      edit: false,
+      edit: true,
     },
     signals: {
       frontPageRouted: pageRouted("frontPage"),

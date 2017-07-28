@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import NavBarItem from '../../components/NavBarItem';
+import NavBarItem from '../../../components/NavBarItem';
 
 export const Wrapper = styled.div`
   background-color: #B5582A;

@@ -5,12 +5,10 @@ import {ButtonStyling, ButtonWrapper} from './elements';
 
 export default connect({
   login: signal`app.login`,
-  toggleEdit: signal`app.toggleEdit`,
-}, function Login ({login, toggleEdit}) {
+}, function Login ({login}) {
   return(
     <ButtonWrapper>
       <ButtonStyling onClick={() => login()}>{"Login med Google"}</ButtonStyling>
-      <ButtonStyling onClick={() => toggleEdit()}>{"Rediger"}</ButtonStyling>
     </ButtonWrapper>
   );
 });

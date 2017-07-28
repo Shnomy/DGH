@@ -1,21 +1,12 @@
 import styled from 'styled-components';
 
-export const EditorInput = styled.textarea`
-  width: 100%;
-  height: 94.9%;
-`;
-
-export const SaveButton = styled.div`
-  border: 2px solid black;
-  &:hover {
-    cursor: pointer;
-    background-color: orange;
-  }
-  padding: 10px;
-  text-align: center;
-  background-color: red;
-`;
-
-export const EditorWrapper = styled.div`
-  flex: 1;
+export const Wrapper = styled.div`
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-template-areas: "bar bar bar"
+                       "prev edit up"
+                       "prev edit list";
+  grid-template-columns: 800px 2fr 1fr;
+  grid-template-rows: 50px 200px 1fr;
 `;
