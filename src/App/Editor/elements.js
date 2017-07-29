@@ -13,5 +13,5 @@ export const Wrapper = styled.div`
                        "prev edit up"
                        "prev edit list";
   grid-template-columns: 800px 1fr 200px;
-  grid-template-rows: 50px 200px 1fr;
+  grid-template-rows: 75px 200px 1fr;
 `;

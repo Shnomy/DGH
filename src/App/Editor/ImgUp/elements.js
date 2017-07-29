@@ -5,6 +5,7 @@ export const ImgUpImage = styled.div`
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  border-left: 1px dashed black;
 `;
 
 export const ImputStyle = styled.input`
