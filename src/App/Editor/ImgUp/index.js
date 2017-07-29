@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'cerebral/react';
-import {ImgUpImage} from './elements';
+import {ImgUpImage, ImputStyle} from './elements';
 import {signal} from 'cerebral/tags';
 
 export default connect({
@@ -8,7 +8,7 @@ export default connect({
 }, function ImgUp({imageSelected}) {
   return (
     <ImgUpImage>
-      <input
+      <ImputStyle
         type={"file"}
         accept={"image/*"}
         onChange={(e) => imageSelected({file: e.target.files[0]})}

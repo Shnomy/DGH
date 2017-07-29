@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {connect} from 'cerebral/react';
 import {state} from 'cerebral/tags';
-import {Container, Background} from './elements';
 import Website from './Website';
 import Editor from './Editor';
 

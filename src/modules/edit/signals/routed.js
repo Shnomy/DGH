@@ -1,6 +1,6 @@
 import {state, props, string} from 'cerebral/tags';
 import {set} from 'cerebral/operators';
-import {value, onChildAdded} from '@cerebral/firebase/operators';
+import {value} from '@cerebral/firebase/operators';
 import listenForImages from '../actions/listenForImages';
 
 export default [

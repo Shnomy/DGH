@@ -9,4 +9,9 @@ export const Wrapper = styled.div`
 
 export const NavBarItemStyled = styled(NavBarItem)`
   flex: 1;
+  @media (max-width: 650px) {
+    .text {
+      display: none;
+    }
+  }
 `;

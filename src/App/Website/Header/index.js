@@ -4,7 +4,7 @@ import {HeaderImage} from './elements';
 class Header extends React.Component {
   render() {
     return (
-      <HeaderImage/>
+      <HeaderImage src={"images/header.png"}/>
     )
   }
 };

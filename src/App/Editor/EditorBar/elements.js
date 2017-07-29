@@ -11,6 +11,7 @@ export const ButtonWrapper = styled.div`
   flex: 1;
   align-items: baseline;
   line-height: 50px;
+  text-align: right;
 `;
 
 export const TextWrapper = styled.div`

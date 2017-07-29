@@ -16,3 +16,7 @@ export const Text = styled.span`
   font-family: sans-serif;
   line-height: 60px;
 `;
+
+export const NavBarText = styled.span`
+
+`;
