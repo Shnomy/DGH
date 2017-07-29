@@ -13,11 +13,11 @@ export default connect({
 }, function NavBar({currentPage, frontPageRouted, boatsRouted, furnitureRouted, doorWindowRouted, tryYourselfRouted}) {
   return (
     <Wrapper>
-      <NavBarItemStyled onClick={frontPageRouted} icon={"home"} text={" Forside"} current={currentPage === "frontPage"}/>
-      <NavBarItemStyled onClick={boatsRouted} icon={"ship"} text={" Båter"} current={currentPage === "boats"}/>
-      <NavBarItemStyled onClick={furnitureRouted} icon={"legal"} text={" Møbler"} current={currentPage === "furniture"}/>
-      <NavBarItemStyled onClick={doorWindowRouted} icon={"windows"} text={" Dør/Vindu"} current={currentPage === "doorWindow"}/>
-      <NavBarItemStyled onClick={tryYourselfRouted} icon={"pencil"} text={" Prøv selv!"} current={currentPage === "tryYourself"}/>
+      <NavBarItemStyled onClick={frontPageRouted} icon={"home"} text={" Forside"} current={currentPage === "forside"}/>
+      <NavBarItemStyled onClick={boatsRouted} icon={"ship"} text={" Båter"} current={currentPage === "bater"}/>
+      <NavBarItemStyled onClick={furnitureRouted} icon={"legal"} text={" Møbler"} current={currentPage === "mobler"}/>
+      <NavBarItemStyled onClick={doorWindowRouted} icon={"windows"} text={" Dør/Vindu"} current={currentPage === "dorVindu"}/>
+      <NavBarItemStyled onClick={tryYourselfRouted} icon={"pencil"} text={" Prøv selv!"} current={currentPage === "provSelv"}/>
     </Wrapper>
   );
 });

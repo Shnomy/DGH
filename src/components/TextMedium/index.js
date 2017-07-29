@@ -1,9 +1,9 @@
 import React from 'react';
 import {TextMediumWrapper} from './elements';
 
-function TextMedium({children}) {
+function TextMedium({children, className}) {
   return (
-    <TextMediumWrapper>
+    <TextMediumWrapper className={className}>
       {children}
     </TextMediumWrapper>
   );

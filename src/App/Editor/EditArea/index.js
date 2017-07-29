@@ -4,11 +4,12 @@ import {state, signal} from 'cerebral/tags';
 import {EditorInput, EditorWrapper} from './elements';
 
 export default connect({
-
-}, function Editor() {
+  onChange: signal`edit.editorChanged`,
+  content: state`edit.content`
+}, function Editor({onChange, content}) {
   return (
     <EditorWrapper>
-      <EditorInput value={"text"}/>
+      <EditorInput onChange={(e) => onChange({text: e.target.value})} value={content}/>
     </EditorWrapper>
   );
 });
