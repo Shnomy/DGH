@@ -5,4 +5,7 @@ export const ButtonWrapper = styled.span`
   padding: 0.5em;
   margin: 0.3em;
   background-color: grey;
+  &:hover {
+    cursor: pointer;
+  }
 `;
