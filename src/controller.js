@@ -1,6 +1,7 @@
 import {Controller} from 'cerebral';
 import Devtools from 'cerebral/devtools';
 import FirebaseProvider from '@cerebral/firebase';
+import FormsProvider from '@cerebral/forms';
 import Router from '@cerebral/router';
 import app from './modules/app';
 import edit from './modules/edit';
@@ -52,6 +53,7 @@ export default Controller({
           storageBucket: "dengladehoevel.appspot.com",
           messagingSenderId: "716208147989"
         }
-      })
+      }),
+      FormsProvider({})
     ]
 })

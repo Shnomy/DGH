@@ -19,7 +19,11 @@ export default connect({
   }
   render() {
     return (
-      <img className={this.props.className} src={this.state.url}/>
+      <img
+        className={this.props.className}
+        src={this.state.url}
+        onClick={this.props.onClick}
+      />
     );
   }
 });
