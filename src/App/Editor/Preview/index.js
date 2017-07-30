@@ -1,10 +1,17 @@
 import React, {createElement} from 'react';
-import marksy from 'marksy';
-import {PreviewWrapper} from './elements';
 import {connect} from 'cerebral/react';
 import {state} from 'cerebral/tags';
+import marksy from 'marksy/components';
 
-const compile = marksy({createElement});
+import {PreviewWrapper} from './elements';
+import Image from '../../../common/Image';
+
+const compile = marksy({
+  createElement,
+  components: {
+    Image
+  },
+});
 
 export default connect({
   content: state`edit.content`

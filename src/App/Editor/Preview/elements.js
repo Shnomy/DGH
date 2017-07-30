@@ -5,6 +5,7 @@ export const PreviewWrapper = styled.div`
   height: 100%;
   grid-area: prev;
   background-color: #f7f7f7;
-  border-right: 1px dashed black; 
+  border-right: 1px dashed black;
   padding: 1.5% 6% 6% 6%;
+  overflow-y: scroll;
 `;
