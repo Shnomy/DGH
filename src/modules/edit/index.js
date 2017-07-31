@@ -14,25 +14,32 @@ export default {
     showAddImageModal: false,
     addImageForm: {
       width: {
-        value: 0
+        value: 0,
+        defaultValue: 0
       },
       text: {
-        value: ""
+        value: "",
+        defaultValue: ""
       },
       position: {
-        value: false
+        value: false,
+        defaultValue: false
       },
       altText: {
-        value: ""
+        value: "",
+        defaultValue: ""
       },
       border: {
-        value: 0
+        value: 0,
+        defaultValue: 0
       },
       color: {
-        value: "black"
+        value: "black",
+        defaultValue: "black"
       },
       corners: {
-        value: 0
+        value: 0,
+        defaultValue: 0
       },
     }
   },
