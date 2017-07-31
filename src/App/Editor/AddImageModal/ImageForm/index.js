@@ -5,6 +5,7 @@ import {state} from 'cerebral/tags';
 import {Form, Label, Input} from './elements';
 import InputText from '../../../../common/InputText';
 import InputSlider from '../../../../common/InputSlider';
+import InputRadio from '../../../../common/InputRadio';
 
 export default connect({
   imageForm: form(state`edit.addImageForm`)
@@ -21,10 +22,16 @@ export default connect({
           step={"5"}
           fieldPath={"edit.addImageForm.width"}
         />
-        <Label>{"Plassering"}</Label>
-        <Input name={"float"} type={"radio"} value={"left"} checked={imageForm.position.value === 'left'}/>{"Venstre"}
-        <Input name={"float"} type={"radio"} value={false} checked={!imageForm.position.value}/>{"Senter"}
-        <Input name={"float"} type={"radio"} value={"right"} checked={imageForm.position.value === 'right'}/>{"Høyre"}
+        <InputRadio
+          label={"Plassering"}
+          fieldPath={"edit.addImageForm.float"}
+          name={"float"}
+          buttons={[
+            {label: "Venstre", value: "left"},
+            {label: "Senter", value: false},
+            {label: "Høyre", value: "right"},
+          ]}
+        />
       </fieldset>
       <fieldset>
         <legend>{"Bildetekst:"}</legend>
@@ -45,7 +52,7 @@ export default connect({
           min={"0"}
           max={"5"}
           step={"0.5"}
-          fieldPath={"edit.imageForm.border"}
+          fieldPath={"edit.addImageForm.border"}
         />
         <InputText
           label={"Rammefarge"}
@@ -57,7 +64,7 @@ export default connect({
           min={"0"}
           max={"100"}
           step={"1"}
-          fieldPath={"edit.imageForm.corners"}
+          fieldPath={"edit.addImageForm.corners"}
         />
       </fieldset>
     </Form>

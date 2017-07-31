@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'cerebral/react';
 import {state, signal, props} from 'cerebral/tags';
 import {field} from '@cerebral/forms';
+import {Label, Input} from '../elements';
+
 
 export default connect({
   field: field(state`${props`fieldPath`}`),
@@ -10,8 +12,8 @@ export default connect({
   if (label) {
     return (
       <span>
-        <label>{label}</label>
-        <input
+        <Label>{label}</Label>
+        <Input
           type={'range'}
           min={min}
           max={max}
@@ -25,7 +27,7 @@ export default connect({
   }
   return (
     <span>
-      <input
+      <Input
         type={'slider'}
         min={min}
         max={max}
