@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'cerebral/react';
-import {ModalWrapper, StyledText, ModalTitle, Content} from './elements';
+import {ModalWrapper, StyledText, ModalTitle, Content, ModalButtonsWrapper, StyledButton} from './elements';
 import ImageForm from './ImageForm';
 import ImagePreview from './ImagePreview';
+
 
 export default connect ({
 
@@ -18,6 +19,10 @@ export default connect ({
         <ImageForm/>
         <ImagePreview/>
       </Content>
+      <ModalButtonsWrapper>
+        <StyledButton text={"Legg til"}/>
+        <StyledButton text={"Avbryt"}/>
+      </ModalButtonsWrapper>
     </ModalWrapper>
   );
 });
