@@ -31,6 +31,7 @@ export const Content = styled.div`
 
 export const ModalButtonsWrapper = styled.div`
   margin-top: 8px;
+  padding: 9px;
   border-top: 1px solid black;
   height: 75px;
   width: 100%;
@@ -38,11 +39,15 @@ export const ModalButtonsWrapper = styled.div`
 `;
 
 export const StyledButton = styled(Button)`
-  background-color: lightGrey;
+  background-color: red;
   flex: 1;
   text-align: center;
-  line-height: 50px;
   &:hover {
     background-color: grey;
   }
 `;
+
+export const StyledButtonLeft = styled(StyledButton)`
+  background-color: green;
+
+`

@@ -3,9 +3,9 @@ import styled from 'styled-components';
 export const ImagePreviewWrapper = styled.div`
   margin: auto;
   flex: 1;
+  margin-left: 6px;
 `;
 
 export const Fieldset = styled.fieldset`
-  margin-left: 6px;
-  height: 300px;
+  height: 539px;
 `;
