@@ -3,7 +3,7 @@ import login from './signals/login';
 import editorChanged from './signals/editorChanged';
 import save from './signals/save';
 import toggleEdit from './signals/toggleEdit';
-import forsideRouted from './signals/forsideRouted';
+import linkClicked from './signals/linkClicked';
 
 export default {
     state: {
@@ -12,6 +12,7 @@ export default {
     },
     signals: {
       frontPageRouted: pageRouted("forside"),
+      editPageRouted: pageRouted("edit/"),
       boatsRouted: pageRouted("bater"),
       furnitureRouted: pageRouted("mobler"),
       doorWindowRouted: pageRouted("dorVindu"),
@@ -21,6 +22,6 @@ export default {
       editorChanged,
       save,
       toggleEdit,
-      forsideRouted,
+      linkClicked,
     }
 }
