@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'cerebral/react';
+import {signal} from 'cerebral/tags';
 import {
   ModalWrapper,
   StyledText,
@@ -12,10 +13,10 @@ import {
 import ImageForm from './ImageForm';
 import ImagePreview from './ImagePreview';
 
-
 export default connect ({
-
-}, function AddImageModal() {
+  closeAddImageModalClicked: signal`edit.closeAddImageModalClicked`,
+  addImageClicked: signal`edit.addImageClicked`,
+}, function AddImageModal({closeAddImageModalClicked, addImageClicked}) {
   return (
     <ModalWrapper>
       <ModalTitle>
@@ -28,8 +29,14 @@ export default connect ({
         <ImagePreview/>
       </Content>
       <ModalButtonsWrapper>
-        <StyledButtonLeft text={"Legg til"}/>
-        <StyledButton text={"Avbryt"}/>
+        <StyledButtonLeft
+          text={"Legg til"}
+          onClick={() => addImageClicked()}
+        />
+        <StyledButton
+          text={"Avbryt"}
+          onClick={() => closeAddImageModalClicked()}
+        />
       </ModalButtonsWrapper>
     </ModalWrapper>
   );

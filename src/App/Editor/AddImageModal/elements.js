@@ -39,7 +39,6 @@ export const ModalButtonsWrapper = styled.div`
 `;
 
 export const StyledButton = styled(Button)`
-  background-color: red;
   flex: 1;
   text-align: center;
   &:hover {
@@ -48,6 +47,6 @@ export const StyledButton = styled(Button)`
 `;
 
 export const StyledButtonLeft = styled(StyledButton)`
-  background-color: green;
+
 
 `
