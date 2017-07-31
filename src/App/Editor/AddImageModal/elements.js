@@ -17,8 +17,12 @@ export const ModalTitle = styled.div`
   height: 75px;
   border-bottom: 1px solid black;
     text-align: center;
-`
+`;
 
 export const StyledText = styled(TextMedium)`
   line-height: 75px;
+`;
+
+export const Content = styled.div`
+  display: flex;
 `;

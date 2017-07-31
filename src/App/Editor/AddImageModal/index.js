@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'cerebral/react';
-import {ModalWrapper, StyledText, ModalTitle} from './elements';
+import {ModalWrapper, StyledText, ModalTitle, Content} from './elements';
 import ImageForm from './ImageForm';
+import ImagePreview from './ImagePreview';
 
 export default connect ({
 
@@ -13,7 +14,10 @@ export default connect ({
           {"Legg til bilde"}
         </StyledText>
       </ModalTitle>
-      <ImageForm/>
+      <Content>
+        <ImageForm/>
+        <ImagePreview/>
+      </Content>
     </ModalWrapper>
   );
 });

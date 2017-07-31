@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Form = styled.form`
   margin: 10px;
   width: 40%;
+  flex: 1;
 `;
 
 export const Label = styled.label`

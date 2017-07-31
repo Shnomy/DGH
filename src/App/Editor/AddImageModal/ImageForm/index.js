@@ -39,14 +39,26 @@ export default connect({
       </fieldset>
       <fieldset>
         <legend>{"Ramme:"}</legend>
-        <Label>{"Rammetykkelse"}</Label>
-        <Input min="0" max="5" step="0.5" type={"range"} value={imageForm.border.value}/>{`${imageForm.border.value} px`}<br/>
+        <InputSlider
+          label={"Rammetykkelse"}
+          unit={"px"}
+          min={"0"}
+          max={"5"}
+          step={"0.5"}
+          fieldPath={"edit.imageForm.border"}
+        />
         <InputText
           label={"Rammefarge"}
           fieldPath={"edit.addImageForm.color"}
         />
-        <Label>{"Runde hjørner"}</Label>
-        <Input min="0" max="100" step="1" type={"range"} value={imageForm.corners.value}/>{`${imageForm.corners.value} px`}<br/>
+        <InputSlider
+          label={"Runde hjørner"}
+          unit={"px"}
+          min={"0"}
+          max={"100"}
+          step={"1"}
+          fieldPath={"edit.imageForm.corners"}
+        />
       </fieldset>
     </Form>
   );
