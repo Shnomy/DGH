@@ -6,24 +6,28 @@ import {field} from '@cerebral/forms';
 export default connect({
   field: field`${props`fieldPath`}`,
   onChange: signal`edit.fieldChanged`
-}, function InputText({field, onChange, label, fieldPath}) {
+}, function InputSlider({field, onChange, label, fieldPath, unit}) {
   if (text) {
     return (
       <span>
         <label>{label}</label>
         <input
-          type={'text'}
+          type={'slider'}
           value={field.value}
           onChange={(e) => onChange({path: fieldPath, value: e.target.value})}
         />
+        {`${field.value} ${unit}`}
       </span>
     );
   }
   return (
-    <input
-      type={'text'}
-      value={field.value}
-      onChange={(e) => onChange({path: fieldPath, value: e.target.value})}
-    />
+    <span>
+      <input
+        type={'slider'}
+        value={field.value}
+        onChange={(e) => onChange({path: fieldPath, value: e.target.value})}
+      />
+      {`${field.value} ${unit}`}
+    </span>
   );
 });
