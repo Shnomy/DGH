@@ -1,20 +1,28 @@
 import React from 'react';
 import {connect} from 'cerebral/react';
-import {state, signal} from 'cerebral/tags';
-import {EditorInput, SaveButton, EditorWrapper} from './elements';
+import {state} from 'cerebral/tags';
+import {Wrapper, Faded} from './elements';
+import EditorBar from './EditorBar';
+import Preview from './Preview';
+import EditArea from './EditArea';
+import ImgUp from './ImgUp';
+import ImageList from './ImageList';
+import AddImageModal from './AddImageModal';
 
 export default connect({
-  currentPage: state`app.currentPage`,
-  text: state`pages.${state`app.currentPage`}`,
-  editorChanged: signal`app.editorChanged`,
-  save: signal`app.save`
-}, function Editor({text, editorChanged, currentPage, save}) {
+  showAddImageModal: state`edit.showAddImageModal`
+}, function Editor({showAddImageModal}) {
   return (
-    <EditorWrapper>
-      <SaveButton onClick={() => save()}>
-        {"Lagre"}
-      </SaveButton>
-      <EditorInput value={text} onChange={(e) => editorChanged({path: `pages.${currentPage}`, text: e.target.value})}/>
-    </EditorWrapper>
+    <div>
+      {showAddImageModal ? <AddImageModal/> : null}
+      {showAddImageModal ? <Faded/> : null}
+      <Wrapper>
+        <EditorBar/>
+        <Preview/>
+        <EditArea/>
+        <ImgUp/>
+        <ImageList/>
+      </Wrapper>
+    </div>
   );
 });

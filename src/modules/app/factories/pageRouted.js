@@ -6,6 +6,7 @@ import {getUser} from '@cerebral/firebase/operators';
 
 export default function pageRouted(page) {
   return [
+    set(state`app.edit`, false),
     set(state`app.currentPage`, page),
     when(state`pages`), {
       true: [],

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Wrapper, Text} from './elements';
+import {Wrapper, Text, NavBarText} from './elements';
 import FontAwesome from 'react-fontawesome';
 
 function NavBarItem({className, text, current, icon, onClick}) {
@@ -7,7 +7,7 @@ function NavBarItem({className, text, current, icon, onClick}) {
     <Wrapper onClick={() => onClick()} className={className}>
       <Text current={current}>
         <FontAwesome  name={icon}/>
-        {text}
+        <NavBarText className={"text"}>{text}</NavBarText>
       </Text>
     </Wrapper>
   )

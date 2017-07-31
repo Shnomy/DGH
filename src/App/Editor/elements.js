@@ -1,21 +1,27 @@
 import styled from 'styled-components';
 
-export const EditorInput = styled.textarea`
-  width: 100%;
-  height: 94.9%;
+export const Wrapper = styled.div`
+  display: grid;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: 0;
+  overflow: hidden;
+  grid-template-areas: "bar bar bar"
+                       "prev edit up"
+                       "prev edit list";
+  grid-template-columns: 800px 1fr 200px;
+  grid-template-rows: 75px 200px 1fr;
 `;
 
-export const SaveButton = styled.div`
-  border: 2px solid black;
-  &:hover {
-    cursor: pointer;
-    background-color: orange;
-  }
-  padding: 10px;
-  text-align: center;
-  background-color: red;
-`;
-
-export const EditorWrapper = styled.div`
-  flex: 1;
+export const Faded = styled.div`
+  background-color: rgba(0,0,0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
 `;

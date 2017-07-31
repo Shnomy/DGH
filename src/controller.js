@@ -1,8 +1,10 @@
 import {Controller} from 'cerebral';
 import Devtools from 'cerebral/devtools';
 import FirebaseProvider from '@cerebral/firebase';
+import FormsProvider from '@cerebral/forms';
 import Router from '@cerebral/router';
 import app from './modules/app';
+import edit from './modules/edit';
 
 export default Controller({
   devtools: process.env.NODE_ENV === 'production'
@@ -10,12 +12,19 @@ export default Controller({
     : Devtools({
       host: 'localhost:8787',
     }),
+    state: {
+      urls: {}
+    },
     modules: {
       app: app,
+      edit: edit,
       router: Router({
         routes: [{
           path: '/',
           signal: 'app.frontPageRouted'
+        }, {
+          path: '/forside',
+          signal: 'app.forsideRouted'
         }, {
           path: '/bater',
           signal: 'app.boatsRouted'
@@ -31,6 +40,9 @@ export default Controller({
         }, {
           path: '/login',
           signal: 'app.loginRouted'
+        }, {
+          path: '/edit/:page',
+          signal: 'edit.routed'
         }]
       })
     },
@@ -44,6 +56,7 @@ export default Controller({
           storageBucket: "dengladehoevel.appspot.com",
           messagingSenderId: "716208147989"
         }
-      })
+      }),
+      FormsProvider({})
     ]
 })

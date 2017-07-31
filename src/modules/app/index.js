@@ -3,6 +3,9 @@ import login from './signals/login';
 import editorChanged from './signals/editorChanged';
 import save from './signals/save';
 import toggleEdit from './signals/toggleEdit';
+import linkClicked from './signals/linkClicked';
+import forsideRouted from './signals/forsideRouted';
+import setURL from './signals/setURL';
 
 export default {
     state: {
@@ -10,15 +13,19 @@ export default {
       edit: false,
     },
     signals: {
-      frontPageRouted: pageRouted("frontPage"),
-      boatsRouted: pageRouted("boats"),
-      furnitureRouted: pageRouted("furniture"),
-      doorWindowRouted: pageRouted("doorWindow"),
-      tryYourselfRouted: pageRouted("tryYourself"),
+      frontPageRouted: pageRouted("forside"),
+      editPageRouted: pageRouted("edit/"),
+      boatsRouted: pageRouted("bater"),
+      furnitureRouted: pageRouted("mobler"),
+      doorWindowRouted: pageRouted("dorVindu"),
+      tryYourselfRouted: pageRouted("provSelv"),
       loginRouted: pageRouted("login"),
       login,
       editorChanged,
       save,
       toggleEdit,
+      linkClicked,
+      forsideRouted,
+      setURL
     }
 }

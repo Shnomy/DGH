@@ -1,0 +1,49 @@
+{
+  "pages": {
+    "bater": {
+      "content": "# bater sin side",
+      "subCategories": {
+        "sc1": {
+          "imgURL": "jfdhfgfk.jpg",
+          "title": "Pram"
+        },
+        "sc2": {
+          "imgURL": "fhdskfsdh.jpg",
+          "title": "Seilbåt"
+        }
+      }
+    },
+    "vinduer": {
+      "content": "# vinduer sin side",
+      "subCategories": {
+      }
+    }
+  },
+  "artclesInCategory": {
+    "sc1": {
+      "a1": true,
+      "a2": true
+    }
+  },
+  "artcles": {
+    "a1": {
+      "content": "# Min artikkel",
+      "title": "Min artikkel",
+      "datimeCreated": 432647823643278,
+      "author": "John",
+    },
+    "a2": {
+      "content": "# Min artikkel 2",
+      "title": "Min artikkel 2",
+      "datimeCreated": 432647823643278,
+      "author": "John"
+    },
+  },
+  "images": {
+    "a1": {
+      "iid1": {
+        "url": "fsffjdsk.jpg"
+      }
+    }
+  }
+}
