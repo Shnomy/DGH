@@ -1,6 +1,6 @@
-import {props} from 'cerebral/tags';
+import {props, state} from 'cerebral/tags';
 import {setField} from '@cerebral/forms/operators';
 
 export default [
-  setField(props`path`, props`value`)
+  setField(state`${props`path`}`, props`value`)
 ];

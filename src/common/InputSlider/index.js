@@ -1,18 +1,21 @@
 import React from 'react';
 import {connect} from 'cerebral/react';
-import {state} from 'cerebral/tags';
+import {state, signal, props} from 'cerebral/tags';
 import {field} from '@cerebral/forms';
 
 export default connect({
-  field: field`${props`fieldPath`}`,
+  field: field(state`${props`fieldPath`}`),
   onChange: signal`edit.fieldChanged`
-}, function InputSlider({field, onChange, label, fieldPath, unit}) {
-  if (text) {
+}, function InputSlider({field, onChange, label, fieldPath, unit, min, max, step}) {
+  if (label) {
     return (
       <span>
         <label>{label}</label>
         <input
-          type={'slider'}
+          type={'range'}
+          min={min}
+          max={max}
+          step={step}
           value={field.value}
           onChange={(e) => onChange({path: fieldPath, value: e.target.value})}
         />
@@ -24,6 +27,9 @@ export default connect({
     <span>
       <input
         type={'slider'}
+        min={min}
+        max={max}
+        step={step}
         value={field.value}
         onChange={(e) => onChange({path: fieldPath, value: e.target.value})}
       />

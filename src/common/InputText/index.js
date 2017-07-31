@@ -1,13 +1,13 @@
 import React from 'react';
 import {connect} from 'cerebral/react';
-import {state} from 'cerebral/tags';
+import {state, props, signal} from 'cerebral/tags';
 import {field} from '@cerebral/forms';
 
 export default connect({
-  field: field`${props`fieldPath`}`,
+  field: field(state`${props`fieldPath`}`),
   onChange: signal`edit.fieldChanged`
 }, function InputText({field, onChange, label, fieldPath}) {
-  if (text) {
+  if (label) {
     return (
       <span>
         <label>{label}</label>

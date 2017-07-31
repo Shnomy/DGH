@@ -6,6 +6,7 @@ import cancelClicked from './signals/cancelClicked';
 import imageSelected from './signals/imageSelected';
 import imageAdded from './signals/imageAdded';
 import imageClicked from './signals/imageClicked';
+import fieldChanged from './signals/fieldChanged';
 
 export default {
   state: {
@@ -44,5 +45,6 @@ export default {
     imageSelected,
     imageAdded,
     imageClicked,
+    fieldChanged,
   }
 };
