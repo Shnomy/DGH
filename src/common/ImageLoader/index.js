@@ -1,35 +1,51 @@
 import React from 'react';
-import {connect} from 'cerebral/react';
 import firebase from 'firebase';
-import {state, signal} from 'cerebral/tags';
+
+import { connect } from 'cerebral/react';
+import { signal, state, props } from 'cerebral/tags';
+
 
 export default connect({
-  urls: state`urls`,
-  setURL: signal`app.setURL`
+  addURL: signal`app.setURL`,
+  cachedURLs: state`urls`
 }, class ImageLoader extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      url: false,
-      loaded: false,
+      imageStatus: 'loading',
+      url: ''
     };
   }
-  componentDidMount() {
-    const [url, ext] = this.props.url.split(".");
 
-    if(this.props.urls[url]) {
-      this.setState({url: this.props.urls[url] + ext})
-    }
-    firebase.storage().ref(`images/${this.props.url}`).getDownloadURL().then((res) => {
-      this.props.setURL({url: res.split(".")[0], name: url});
-      this.setState({url: res});
-    })
+  handleImageLoaded() {
+    this.setState({ imageStatus: 'loaded' });
   }
+
+  handleImageErrored() {
+    this.setState({ imageStatus: 'failed to load' });
+  }
+
+  componentDidMount() {
+    const url = this.props.url.substring(0, this.props.url.length - 4);
+
+    if (Object.keys(this.props.cachedURLs).indexOf(url) !== -1) {
+      this.setState({url: this.props.cachedURLs[url]});
+    } else {
+      firebase.storage().ref(`images/${this.props.url}`).getDownloadURL()
+        .then(res => {
+          this.setState({url: res});
+          this.props.addURL({key: url, value: res});
+        });
+    }
+  }
+
   render() {
     return (
       <img
         className={this.props.className}
         src={this.state.url}
+        onLoad={this.handleImageLoaded.bind(this)}
+        onError={this.handleImageErrored.bind(this)}
         onClick={this.props.onClick}
       />
     );
