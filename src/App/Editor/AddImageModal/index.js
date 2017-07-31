@@ -1,12 +1,22 @@
 import React from 'react';
 import {connect} from 'cerebral/react';
-import {ModalWrapper, StyledText, ModalTitle, Content} from './elements';
+import {signal} from 'cerebral/tags';
+import {
+  ModalWrapper,
+  StyledText,
+  ModalTitle,
+  Content,
+  ModalButtonsWrapper,
+  StyledButton,
+  StyledButtonLeft
+ } from './elements';
 import ImageForm from './ImageForm';
 import ImagePreview from './ImagePreview';
 
 export default connect ({
-
-}, function AddImageModal() {
+  closeAddImageModalClicked: signal`edit.closeAddImageModalClicked`,
+  addImageClicked: signal`edit.addImageClicked`,
+}, function AddImageModal({closeAddImageModalClicked, addImageClicked}) {
   return (
     <ModalWrapper>
       <ModalTitle>
@@ -18,6 +28,16 @@ export default connect ({
         <ImageForm/>
         <ImagePreview/>
       </Content>
+      <ModalButtonsWrapper>
+        <StyledButtonLeft
+          text={"Legg til"}
+          onClick={() => addImageClicked()}
+        />
+        <StyledButton
+          text={"Avbryt"}
+          onClick={() => closeAddImageModalClicked()}
+        />
+      </ModalButtonsWrapper>
     </ModalWrapper>
   );
 });

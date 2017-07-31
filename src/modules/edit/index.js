@@ -7,6 +7,8 @@ import imageSelected from './signals/imageSelected';
 import imageAdded from './signals/imageAdded';
 import imageClicked from './signals/imageClicked';
 import fieldChanged from './signals/fieldChanged';
+import closeAddImageModalClicked from './signals/closeAddImageModalClicked';
+import addImageClicked from './signals/addImageClicked';
 
 export default {
   state: {
@@ -14,8 +16,8 @@ export default {
     showAddImageModal: false,
     addImageForm: {
       width: {
-        value: 0,
-        defaultValue: 0
+        value: 100,
+        defaultValue: 100
       },
       text: {
         value: "",
@@ -53,5 +55,7 @@ export default {
     imageAdded,
     imageClicked,
     fieldChanged,
+    closeAddImageModalClicked,
+    addImageClicked,
   }
 };

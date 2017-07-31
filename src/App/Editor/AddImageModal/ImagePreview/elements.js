@@ -1,7 +1,11 @@
 import styled from 'styled-components';
 
 export const ImagePreviewWrapper = styled.div`
-  height: 100px;
-  background-color: grey;
+  margin: auto;
   flex: 1;
+  margin-left: 6px;
+`;
+
+export const Fieldset = styled.fieldset`
+  height: 539px;
 `;
