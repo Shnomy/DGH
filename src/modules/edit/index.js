@@ -22,8 +22,8 @@ export default {
         defaultValue: ""
       },
       position: {
-        value: false,
-        defaultValue: false
+        value: "full",
+        defaultValue: "full"
       },
       altText: {
         value: "",

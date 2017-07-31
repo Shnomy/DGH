@@ -24,11 +24,11 @@ export default connect({
         />
         <InputRadio
           label={"Plassering"}
-          fieldPath={"edit.addImageForm.float"}
+          fieldPath={"edit.addImageForm.position"}
           name={"float"}
           buttons={[
             {label: "Venstre", value: "left"},
-            {label: "Senter", value: false},
+            {label: "Senter", value: "full"},
             {label: "Høyre", value: "right"},
           ]}
         />
