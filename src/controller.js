@@ -12,6 +12,9 @@ export default Controller({
     : Devtools({
       host: 'localhost:8787',
     }),
+    state: {
+      urls: {}
+    },
     modules: {
       app: app,
       edit: edit,

@@ -4,6 +4,8 @@ import editorChanged from './signals/editorChanged';
 import save from './signals/save';
 import toggleEdit from './signals/toggleEdit';
 import linkClicked from './signals/linkClicked';
+import forsideRouted from './signals/forsideRouted';
+import setURL from './signals/setURL';
 
 export default {
     state: {
@@ -23,5 +25,7 @@ export default {
       save,
       toggleEdit,
       linkClicked,
+      forsideRouted,
+      setURL
     }
 }
