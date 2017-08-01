@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'cerebral/react';
 import {state, props, signal} from 'cerebral/tags';
 import {field} from '@cerebral/forms';
-import {Label, Input} from '../elements';
+import {Label, Input, Wrapper} from './elements';
 
 
 export default connect({
@@ -11,21 +11,23 @@ export default connect({
 }, function InputText({field, onChange, label, fieldPath}) {
   if (label) {
     return (
-      <span>
+      <Wrapper>
         <Label>{label}</Label>
         <Input
           type={'text'}
           value={field.value}
           onChange={(e) => onChange({path: fieldPath, value: e.target.value})}
         />
-      </span>
+      </Wrapper>
     );
   }
   return (
-    <Input
-      type={'text'}
-      value={field.value}
-      onChange={(e) => onChange({path: fieldPath, value: e.target.value})}
-    />
+    <Wrapper>
+      <Input
+        type={'text'}
+        value={field.value}
+        onChange={(e) => onChange({path: fieldPath, value: e.target.value})}
+      />
+    </Wrapper>
   );
 });

@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 
+export const Wrapper = styled.div`
+  display: flex;
+  min-height: 25px;
+`;
+
 export const Input = styled.input`
-  display: block;
+  flex: 1;
 `;
 
 export const Label = styled.label`
-  display: block;
+  flex: 1;
 `;

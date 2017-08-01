@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'cerebral/react';
 import {state, signal, props} from 'cerebral/tags';
 import {field} from '@cerebral/forms';
-import {Label, Input} from '../elements';
+import {Label, Input, OptionWrapper, Wrapper, OptionLabel} from './elements';
 
 export default connect({
   field: field(state`${props`fieldPath`}`),
@@ -10,8 +10,8 @@ export default connect({
 }, function InputRadio({field, onChange, label, fieldPath, name, buttons = []}) {
   const buttonsElements = buttons.map((el) => {
     return (
-      <span>
-        <Label>{el.label}</Label>
+      <OptionWrapper key={el.label}>
+        <OptionLabel>{el.label}</OptionLabel>
         <Input
           type={"radio"}
           name={name}
@@ -19,14 +19,15 @@ export default connect({
           value={el.value}
           onChange={(e) => onChange({path: fieldPath, value: e.target.value})}
         />
-      </span>
+      </OptionWrapper>
     );
   });
   if (label) {
     return (
-      <span>
+      <Wrapper>
+        <Label>{label}</Label>
         {buttonsElements}
-      </span>
+      </Wrapper>
     );
   }
   return (

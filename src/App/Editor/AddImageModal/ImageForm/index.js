@@ -40,14 +40,14 @@ export default connect({
           fieldPath={"edit.addImageForm.text"}
         />
         <InputText
-          label={"Tekst"}
+          label={"Alternativ Tekst"}
           fieldPath={"edit.addImageForm.altText"}
         />
       </fieldset>
       <fieldset>
         <legend>{"Ramme:"}</legend>
         <InputSlider
-          label={"Rammetykkelse"}
+          label={"Tykkelse"}
           unit={"px"}
           min={"0"}
           max={"5"}
@@ -55,11 +55,11 @@ export default connect({
           fieldPath={"edit.addImageForm.border"}
         />
         <InputText
-          label={"Rammefarge"}
+          label={"Farge"}
           fieldPath={"edit.addImageForm.color"}
         />
         <InputSlider
-          label={"Runde hjørner"}
+          label={"Hjørne-radius"}
           unit={"px"}
           min={"0"}
           max={"100"}

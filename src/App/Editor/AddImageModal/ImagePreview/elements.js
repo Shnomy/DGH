@@ -2,10 +2,13 @@ import styled from 'styled-components';
 
 export const ImagePreviewWrapper = styled.div`
   margin: auto;
-  flex: 1;
   margin-left: 6px;
 `;
 
 export const Fieldset = styled.fieldset`
-  height: 539px;
+`;
+
+export const Content = styled.div`
+  max-width: 100%;
+  max-height: 100%;
 `;
