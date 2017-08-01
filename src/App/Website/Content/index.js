@@ -1,7 +1,7 @@
 import React from 'react';
 import {ContentWrapper} from './elements';
 import {connect} from 'cerebral/react';
-import {state} from 'cerebral/tags';
+import {state, signal} from 'cerebral/tags';
 import compile from '../../../marksy';
 
 import Login from '../Login';
@@ -10,8 +10,9 @@ import Button from '../../../components/Button';
 export default connect({
   user: state`app.user`,
   currentPage: state`app.currentPage`,
-  page: state`pages.${state`app.currentPage`}`
-}, function Content({page, currentPage, user}) {
+  page: state`pages.${state`app.currentPage`}`,
+  linkClicked: signal`app.linkClicked`,
+}, function Content({page, currentPage, linkClicked, user}) {
     if (currentPage === "login") {
       return (
         <ContentWrapper>
@@ -21,7 +22,12 @@ export default connect({
     }
     return (
       <ContentWrapper>
-        {user ? <Button text={"Rediger side"}/> : null}
+        {user ? (
+          <Button
+            text={"Rediger side"}
+            onClick={() => linkClicked({url: `/edit/${currentPage}`})}
+          />
+        ) : null}
         {compile(page || "").tree}
       </ContentWrapper>
     );

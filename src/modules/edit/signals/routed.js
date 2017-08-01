@@ -10,5 +10,4 @@ export default [
   set(state`edit.content`, props`value`),
   set(state`edit.backup`, props`value`),
   listenForImages,
-
 ];
