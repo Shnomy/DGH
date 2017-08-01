@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'cerebral/react';
-import {ImagePreviewWrapper, Fieldset, StyledButton} from './elements';
+import {ImagePreviewWrapper, Fieldset} from './elements';
 
 export default connect({
 

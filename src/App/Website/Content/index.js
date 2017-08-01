@@ -1,25 +1,18 @@
-import React, {createElement} from 'react';
-import marksy from 'marksy/components';
+import React from 'react';
 import {ContentWrapper} from './elements';
 import {connect} from 'cerebral/react';
 import {state, signal} from 'cerebral/tags';
+import compile from '../../../marksy';
+
 import Login from '../Login';
-import Image from '../../../common/Image';
 import Button from '../../../components/Button';
 
-
-const compile = marksy({
-  createElement,
-  components: {
-    Image
-  },
-});
-
 export default connect({
+  user: state`app.user`,
   currentPage: state`app.currentPage`,
   page: state`pages.${state`app.currentPage`}`,
   linkClicked: signal`app.linkClicked`,
-}, function Content({page, currentPage, linkClicked}) {
+}, function Content({page, currentPage, linkClicked, user}) {
     if (currentPage === "login") {
       return (
         <ContentWrapper>
@@ -29,10 +22,12 @@ export default connect({
     }
     return (
       <ContentWrapper>
-        <Button
-          text={"Rediger side"}
-          onClick={() => linkClicked({url: `/edit/${currentPage}`})}
-        />
+        {user ? (
+          <Button
+            text={"Rediger side"}
+            onClick={() => linkClicked({url: `/edit/${currentPage}`})}
+          />
+        ) : null}
         {compile(page || "").tree}
       </ContentWrapper>
     );

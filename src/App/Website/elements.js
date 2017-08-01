@@ -7,7 +7,7 @@ export const Container = styled.div`
 `;
 
 export const Background = styled.div`
-  background-image: url(./images/BG.jpg);
+  background-image: url(/images/BG.jpg);
   background-attachment: fixed;
   background-size: cover;
 `;

@@ -2,7 +2,7 @@ import React from 'react';
 import firebase from 'firebase';
 
 import { connect } from 'cerebral/react';
-import { signal, state, props } from 'cerebral/tags';
+import { signal, state } from 'cerebral/tags';
 
 
 export default connect({
@@ -47,6 +47,7 @@ export default connect({
         onLoad={this.handleImageLoaded.bind(this)}
         onError={this.handleImageErrored.bind(this)}
         onClick={this.props.onClick}
+        alt={this.props.altText}
       />
     );
   }

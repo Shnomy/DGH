@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'cerebral/react';
 import {form} from '@cerebral/forms';
 import {state} from 'cerebral/tags';
-import {Form, Label, Input} from './elements';
+import {Form} from './elements';
 import InputText from '../../../../common/InputText';
 import InputSlider from '../../../../common/InputSlider';
 import InputRadio from '../../../../common/InputRadio';

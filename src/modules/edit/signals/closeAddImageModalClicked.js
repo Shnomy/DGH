@@ -1,4 +1,4 @@
-import {state, props} from 'cerebral/tags';
+import {state} from 'cerebral/tags';
 import {set} from 'cerebral/operators';
 import {resetForm} from '@cerebral/forms/operators'
 
