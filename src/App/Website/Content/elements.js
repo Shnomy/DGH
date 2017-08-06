@@ -7,5 +7,9 @@ export const ContentWrapper = styled.div`
   min-height: 600px;
   width: 100%;
   flex: 1;
-  flex-grow: 1;
+`;
+
+export const OuterWrapper = styled.div`
+  display: flex;
+  width: 100%;
 `;

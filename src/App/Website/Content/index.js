@@ -1,5 +1,5 @@
 import React from "react";
-import { ContentWrapper } from "./elements";
+import { ContentWrapper, OuterWrapper } from "./elements";
 import { connect } from "cerebral/react";
 import { state, signal } from "cerebral/tags";
 import compile from "../../../marksy";
@@ -66,16 +66,18 @@ export default connect(
     }
     console.log(menu);
     return (
-      <ContentWrapper>
+      <OuterWrapper>
         <SubMenu buttons={menu} placeholder={buttonText} onAddClicked />
-        {user
-          ? <Button
-              text={"Rediger side"}
-              onClick={() => linkClicked({ url: `/edit/${currentPage}` })}
-            />
-          : null}
-        {compile(content || "").tree}
-      </ContentWrapper>
+        <ContentWrapper>
+          {user
+            ? <Button
+                text={"Rediger side"}
+                onClick={() => linkClicked({ url: `/edit/${currentPage}` })}
+              />
+            : null}
+          {compile(content || "").tree}
+        </ContentWrapper>
+      </OuterWrapper>
     );
   }
 );
