@@ -5,17 +5,24 @@
       "subCategories": {
         "sc1": {
           "imgURL": "jfdhfgfk.jpg",
-          "title": "Pram"
+          "title": "Pram",
+          "content": "# fsfsdsdsds"
         },
         "sc2": {
           "imgURL": "fhdskfsdh.jpg",
-          "title": "Seilbåt"
+          "title": "Seilbåt",
+          "content": "# fsfsdsdsds"
         }
       }
     },
     "vinduer": {
       "content": "# vinduer sin side",
       "subCategories": {
+        "sc2": {
+          "imgURL": "fhdskfsdh.jpg",
+          "title": "Seilbåt",
+          "content": "# fsfsdsdsds"
+        }
       }
     }
   },
