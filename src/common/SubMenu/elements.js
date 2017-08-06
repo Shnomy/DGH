@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import FontAwesome from "react-fontawesome";
 
 export const OuterWrapper = styled.div`
   max-width: 250px;
@@ -13,14 +14,36 @@ export const OuterWrapper = styled.div`
 
 export const MenuText = styled.div`
   width: 100%;
-  height: 50px;
+  height: 35px;
   background-color: lightgrey;
-  line-height: 50px;
+  line-height: 35px;
   padding-left: 10px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
   cursor: pointer;
   font-family: sans-serif;
   &:hover {
     border-bottom: 2px solid black;
+  }
+`;
+
+export const InputWrapper = styled.div`display: flex;`;
+
+export const PlussIcon = styled(FontAwesome)`
+  flex: 1;
+  text-align: center;
+  line-height: 50px;
+  font-size: 1.75em;
+  cursor: pointer;
+  :hover {
+    color: rgb(48, 48, 48);
+  }
+`;
+
+export const BackIcon = styled(FontAwesome)`
+  flex: 1;
+  text-align: center;
+  padding-right: 10px;
+  :hover {
+    color: rgb(48, 48, 48);
   }
 `;

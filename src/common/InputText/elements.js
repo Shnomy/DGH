@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -7,8 +7,7 @@ export const Wrapper = styled.div`
 
 export const Input = styled.input`
   flex: 1;
+  padding: 5px;
 `;
 
-export const Label = styled.label`
-  flex: 1;
-`;
+export const Label = styled.label`flex: 1;`;

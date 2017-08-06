@@ -9,7 +9,14 @@ export default connect(
     field: field(state`${props`fieldPath`}`),
     onChange: signal`edit.fieldChanged`
   },
-  function InputText({ className, field, onChange, label, fieldPath }) {
+  function InputText({
+    className,
+    field,
+    onChange,
+    label,
+    fieldPath,
+    placeholder
+  }) {
     if (label) {
       return (
         <Wrapper className={className}>
@@ -20,6 +27,7 @@ export default connect(
             type={"text"}
             value={field.value}
             onChange={e => onChange({ path: fieldPath, value: e.target.value })}
+            placeholder={placeholder}
           />
         </Wrapper>
       );
@@ -30,6 +38,7 @@ export default connect(
           type={"text"}
           value={field.value}
           onChange={e => onChange({ path: fieldPath, value: e.target.value })}
+          placeholder={placeholder}
         />
       </Wrapper>
     );
