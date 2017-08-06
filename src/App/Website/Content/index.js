@@ -21,6 +21,7 @@ export default connect(
     articlesInCategory: state`articlesInCategory.${state`app.currentSubCategory`}`,
     pageContent: state`pages.${state`app.currentPage`}.content`,
     subCategoriesInPage: state`pages.${state`app.currentPage`}.subCategories`,
+    articleContent: state`articles.${state`app.currentArticle`}.content`,
 
     addSubCategory: signal`app.addSubCategory`,
     addArticle: signal`app.addArticle`,
@@ -36,6 +37,7 @@ export default connect(
     articlesInCategory,
     pageContent,
     subCategoriesInPage,
+    articleContent,
 
     linkClicked,
     addSubCategory,
@@ -54,16 +56,30 @@ export default connect(
     let menu = {};
     let buttonText = "";
     let onAddClicked = null;
+    let backClicked = null;
+    let backText = null;
 
     if (currentArticle) {
-      content = "# an article";
+      content = articleContent;
       buttonText = "Ny artikkel";
       onAddClicked = () =>
         addArticle({
           subCategory: currentSubCategory,
           title: addForm.text.value
         });
-      menu = articlesInCategory;
+      menu = articlesInCategory
+        ? Object.keys(articlesInCategory).map(article => {
+            return {
+              onClick: () =>
+                linkClicked({
+                  url: `/${currentPage}/${currentSubCategory}/${article}`
+                }),
+              title: articlesInCategory[article].title
+            };
+          })
+        : null;
+      backClicked = () =>
+        linkClicked({ url: `/${currentPage}/${currentSubCategory}` });
     } else if (currentSubCategory) {
       buttonText = "Ny artikkel";
       content = subCategoryContent;
@@ -72,7 +88,18 @@ export default connect(
           subCategory: currentSubCategory,
           title: addForm.text.value
         });
-      menu = articlesInCategory;
+      menu = articlesInCategory
+        ? Object.keys(articlesInCategory).map(article => {
+            return {
+              onClick: () =>
+                linkClicked({
+                  url: `/${currentPage}/${currentSubCategory}/${article}`
+                }),
+              title: articlesInCategory[article].title
+            };
+          })
+        : null;
+      backClicked = () => linkClicked({ url: `/${currentPage}` });
     } else if (currentPage) {
       buttonText = "Ny kategori";
       content = pageContent;
@@ -87,13 +114,14 @@ export default connect(
           })
         : {};
     }
-
+    console.log(content);
     return (
       <ContentWrapper>
         <SubMenu
           buttons={menu}
           placeholder={buttonText}
           onAddClicked={onAddClicked}
+          backClicked={backClicked}
         />
         {user
           ? <Button
