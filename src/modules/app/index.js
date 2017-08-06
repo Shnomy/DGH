@@ -13,6 +13,8 @@ import forsideRouted from "./signals/forsideRouted";
 import setURL from "./signals/setURL";
 import redirect from "./signals/redirect";
 
+import addSubCategory from "./signals/addSubCategory";
+
 export default {
   state: {
     currentPage: "frontPage",
@@ -32,6 +34,8 @@ export default {
     linkClicked,
     forsideRouted,
     setURL,
-    redirect
+    redirect,
+
+    addSubCategory
   }
 };

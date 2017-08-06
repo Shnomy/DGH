@@ -4,12 +4,10 @@
       "content": "# bater sin side",
       "subCategories": {
         "sc1": {
-          "imgURL": "jfdhfgfk.jpg",
           "title": "Pram",
           "content": "# fsfsdsdsds"
         },
         "sc2": {
-          "imgURL": "fhdskfsdh.jpg",
           "title": "Seilbåt",
           "content": "# fsfsdsdsds"
         }
@@ -19,7 +17,6 @@
       "content": "# vinduer sin side",
       "subCategories": {
         "sc2": {
-          "imgURL": "fhdskfsdh.jpg",
           "title": "Seilbåt",
           "content": "# fsfsdsdsds"
         }
