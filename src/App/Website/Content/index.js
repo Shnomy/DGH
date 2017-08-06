@@ -4,6 +4,7 @@ import { connect } from "cerebral/react";
 import { state, signal } from "cerebral/tags";
 import compile from "../../../marksy";
 
+import SubMenu from "../../../common/SubMenu";
 import Login from "../Login";
 import Button from "../../../components/Button";
 
@@ -13,6 +14,7 @@ export default connect(
     currentPage: state`app.currentPage`,
     currentSubCategory: state`app.currentSubCategory`,
     currentArticle: state`app.currentArticle`,
+    linkClicked: signal`app.linkClicked`,
 
     subCategoryContent: state`pages.${state`app.currentPage`}.subCategories.${state`app.currentSubCategory`}.content`,
     articlesInCategory: state`articlesInCategory.${state`app.currentSubCategory`}`,
@@ -42,19 +44,30 @@ export default connect(
 
     let content = "";
     let menu = {};
+    let buttonText = "";
 
     if (currentArticle) {
       content = "# an article";
     } else if (currentSubCategory) {
+      buttonText = "Ny artikkel";
       content = subCategoryContent;
       menu = articlesInCategory;
     } else if (currentPage) {
+      buttonText = "Ny kategori";
       content = pageContent;
-      menu = subCategoriesInPage;
+      menu = subCategoriesInPage
+        ? Object.keys(subCategoriesInPage).map(kat => {
+            return {
+              onClick: () => linkClicked({ url: `/${currentPage}/${kat}` }),
+              title: subCategoriesInPage[kat].title
+            };
+          })
+        : {};
     }
-    console.log(content);
+    console.log(menu);
     return (
       <ContentWrapper>
+        <SubMenu buttons={menu} placeholder={buttonText} onAddClicked />
         {user
           ? <Button
               text={"Rediger side"}

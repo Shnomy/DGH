@@ -5,7 +5,6 @@ import Header from "./Header";
 import NavBar from "./NavBar";
 import Content from "./Content";
 import Footer from "./Footer";
-import SubMenu from "../../common/SubMenu";
 
 export default connect({}, function App({ edit }) {
   return (
@@ -14,7 +13,6 @@ export default connect({}, function App({ edit }) {
         <Header />
         <NavBar />
         <ContentWrapper>
-          <SubMenu />
           <Content />
         </ContentWrapper>
         <Footer />

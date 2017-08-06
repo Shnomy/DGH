@@ -14,40 +14,25 @@ import {
   BackIcon
 } from "./elements";
 
-export default connect(
-  {
-    currentPage: state`app.currentPage`,
-    subCategories: state`pages.${state`app.currentPage`}.subCategories`,
-    addForm: form(state`edit.addForm`),
-    addSubCategory: signal`app.addSubCategory`
-  },
-  function SubMenu({ addSubCategory, addForm, currentPage, subCategories }) {
-    const menu = Object.keys(subCategories || {}).map(el => {
-      return (
-        <SubMenuItem>
-          {subCategories[el].title}
-        </SubMenuItem>
-      );
-    });
+export default function SubMenu({ buttons, placeholder, onAddClicked }) {
+  const menu = Object.keys(buttons || {}).map(el => {
     return (
-      <OuterWrapper>
-        <MenuText>
-          <BackIcon name={"arrow-left"} />
-          {"Undersider"}
-        </MenuText>
-        {menu}
-        <InputWrapper>
-          <InputText
-            fieldPath={"edit.addForm.text"}
-            placeholder={"Ny kategori"}
-          />
-          <PlussIcon
-            name={"plus"}
-            onClick={() =>
-              addSubCategory({ page: currentPage, title: addForm.text.value })}
-          />
-        </InputWrapper>
-      </OuterWrapper>
+      <SubMenuItem onClick={buttons[el].onClick}>
+        {buttons[el].title}
+      </SubMenuItem>
     );
-  }
-);
+  });
+  return (
+    <OuterWrapper>
+      <MenuText>
+        <BackIcon name={"arrow-left"} />
+        {"Undersider"}
+      </MenuText>
+      {menu}
+      <InputWrapper>
+        <InputText fieldPath={"edit.addForm.text"} placeholder={placeholder} />
+        <PlussIcon name={"plus"} onClick={() => onAddClicked()} />
+      </InputWrapper>
+    </OuterWrapper>
+  );
+}
