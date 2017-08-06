@@ -11,10 +11,17 @@ export default connect(
   {
     user: state`app.user`,
     currentPage: state`app.currentPage`,
+<<<<<<< HEAD
     page: state`pages.${state`app.currentPage`}.content`,
     linkClicked: signal`app.linkClicked`
   },
   function Content({ page, currentPage, linkClicked, user }) {
+=======
+    pageContent: state`pages.${state`app.currentPage`}.content`,
+    linkClicked: signal`app.linkClicked`
+  },
+  function Content({ pageContent, currentPage, linkClicked, user }) {
+>>>>>>> c687ed5a7c563cee31622cdb32290cddc40bc70b
     if (currentPage === "login") {
       return (
         <ContentWrapper>
@@ -30,7 +37,11 @@ export default connect(
               onClick={() => linkClicked({ url: `/edit/${currentPage}` })}
             />
           : null}
+<<<<<<< HEAD
         {compile(page || "").tree}
+=======
+        {compile(pageContent || "").tree}
+>>>>>>> c687ed5a7c563cee31622cdb32290cddc40bc70b
       </ContentWrapper>
     );
   }
