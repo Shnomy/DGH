@@ -10,13 +10,7 @@ export default function routed(cont = []) {
     set(state`app.edit`, false),
     cont,
     parallel([
-      [
-        when(state`pages`),
-        {
-          true: [],
-          false: getData
-        }
-      ],
+      getData,
       [
         getUser(),
         {
