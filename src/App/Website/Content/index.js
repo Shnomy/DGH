@@ -11,10 +11,27 @@ export default connect(
   {
     user: state`app.user`,
     currentPage: state`app.currentPage`,
+    currentSubCategory: state`app.currentSubCategory`,
+    currentArticle: state`app.currentArticle`,
+
+    subCategoryContent: state`pages.${state`app.currentPage`}.subCategories.${state`app.currentSubCategory`}.content`,
+    articlesInCategory: state`articlesInCategory.${state`app.currentSubCategory`}`,
     pageContent: state`pages.${state`app.currentPage`}.content`,
-    linkClicked: signal`app.linkClicked`
+    subCategoriesInPage: state`pages.${state`app.currentPage`}.subCategories`
   },
-  function Content({ pageContent, currentPage, linkClicked, user }) {
+  function Content({
+    user,
+    currentPage,
+    currentSubCategory,
+    currentArticle,
+
+    subCategoryContent,
+    articlesInCategory,
+    pageContent,
+    subCategoriesInPage,
+
+    linkClicked
+  }) {
     if (currentPage === "login") {
       return (
         <ContentWrapper>
@@ -22,6 +39,20 @@ export default connect(
         </ContentWrapper>
       );
     }
+
+    let content = "";
+    let menu = {};
+
+    if (currentArticle) {
+      content = "# an article";
+    } else if (currentSubCategory) {
+      content = subCategoryContent;
+      menu = articlesInCategory;
+    } else if (currentPage) {
+      content = pageContent;
+      menu = subCategoriesInPage;
+    }
+    console.log(content);
     return (
       <ContentWrapper>
         {user
@@ -30,7 +61,7 @@ export default connect(
               onClick={() => linkClicked({ url: `/edit/${currentPage}` })}
             />
           : null}
-        {compile(pageContent || "").tree}
+        {compile(content || "").tree}
       </ContentWrapper>
     );
   }

@@ -14,7 +14,9 @@ export default Controller({
           host: "localhost:8787"
         }),
   state: {
-    urls: {}
+    urls: {},
+    pages: {},
+    articlesInCategory: {}
   },
   modules: {
     app: app,

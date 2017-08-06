@@ -25,8 +25,12 @@
   },
   "artclesInCategory": {
     "sc1": {
-      "a1": true,
-      "a2": true
+      "a1": {
+        "title": "Min artikkel"
+      },
+      "a2": {
+        "title": "Min artikkel2 "
+      }
     }
   },
   "artcles": {

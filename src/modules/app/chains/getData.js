@@ -1,4 +1,5 @@
-import getPages from "../actions/getPages";
-import setPages from "../actions/setPages";
+import { parallel } from "cerebral";
+import getPages from "./getPages";
+import getSubcategory from "./getSubCategory";
 
-export default [getPages, setPages];
+export default parallel("getData", [getPages, getSubcategory]);
