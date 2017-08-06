@@ -16,7 +16,8 @@ export default Controller({
   state: {
     urls: {},
     pages: {},
-    articlesInCategory: {}
+    articlesInCategory: {},
+    articles: {}
   },
   modules: {
     app: app,

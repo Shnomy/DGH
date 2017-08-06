@@ -14,6 +14,7 @@ import setURL from "./signals/setURL";
 import redirect from "./signals/redirect";
 
 import addSubCategory from "./signals/addSubCategory";
+import addArticle from "./signals/addArticle";
 
 export default {
   state: {
@@ -36,6 +37,7 @@ export default {
     setURL,
     redirect,
 
-    addSubCategory
+    addSubCategory,
+    addArticle
   }
 };

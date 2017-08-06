@@ -1,11 +1,7 @@
 import React from "react";
-import { connect } from "cerebral/react";
+
 import InputText from "../../common/InputText";
-import { state, signal } from "cerebral/tags";
-import { form } from "@cerebral/forms";
-
 import SubMenuItem from "../../components/SubMenuItem";
-
 import {
   OuterWrapper,
   MenuText,
@@ -14,20 +10,27 @@ import {
   BackIcon
 } from "./elements";
 
-export default function SubMenu({ buttons, placeholder, onAddClicked }) {
+export default function SubMenu({
+  buttons,
+  placeholder,
+  onAddClicked,
+  backClicked
+}) {
   const menu = Object.keys(buttons || {}).map(el => {
     return (
-      <SubMenuItem onClick={buttons[el].onClick}>
+      <SubMenuItem key={el} onClick={buttons[el].onClick}>
         {buttons[el].title}
       </SubMenuItem>
     );
   });
   return (
     <OuterWrapper>
-      <MenuText>
-        <BackIcon name={"arrow-left"} />
-        {"Undersider"}
-      </MenuText>
+      {backClicked
+        ? <MenuText onClick={backClicked}>
+            <BackIcon name={"arrow-left"} />
+            {"Tilbake"}
+          </MenuText>
+        : null}
       {menu}
       <InputWrapper>
         <InputText fieldPath={"edit.addForm.text"} placeholder={placeholder} />

@@ -2,6 +2,7 @@ import React from "react";
 import { ContentWrapper, OuterWrapper } from "./elements";
 import { connect } from "cerebral/react";
 import { state, signal } from "cerebral/tags";
+import { form } from "@cerebral/forms";
 import compile from "../../../marksy";
 
 import SubMenu from "../../../common/SubMenu";
@@ -19,7 +20,12 @@ export default connect(
     subCategoryContent: state`pages.${state`app.currentPage`}.subCategories.${state`app.currentSubCategory`}.content`,
     articlesInCategory: state`articlesInCategory.${state`app.currentSubCategory`}`,
     pageContent: state`pages.${state`app.currentPage`}.content`,
-    subCategoriesInPage: state`pages.${state`app.currentPage`}.subCategories`
+    subCategoriesInPage: state`pages.${state`app.currentPage`}.subCategories`,
+    articleContent: state`articles.${state`app.currentArticle`}.content`,
+
+    addSubCategory: signal`app.addSubCategory`,
+    addArticle: signal`app.addArticle`,
+    addForm: form(state`edit.addForm`)
   },
   function Content({
     user,
@@ -31,8 +37,12 @@ export default connect(
     articlesInCategory,
     pageContent,
     subCategoriesInPage,
+    articleContent,
 
-    linkClicked
+    linkClicked,
+    addSubCategory,
+    addArticle,
+    addForm
   }) {
     if (currentPage === "login") {
       return (
@@ -45,16 +55,56 @@ export default connect(
     let content = "";
     let menu = {};
     let buttonText = "";
+    let onAddClicked = null;
+    let backClicked = null;
+    let backText = null;
 
     if (currentArticle) {
-      content = "# an article";
+      content = articleContent;
+      buttonText = "Ny artikkel";
+      onAddClicked = () =>
+        addArticle({
+          subCategory: currentSubCategory,
+          title: addForm.text.value
+        });
+      menu = articlesInCategory
+        ? Object.keys(articlesInCategory).map(article => {
+            return {
+              onClick: () =>
+                linkClicked({
+                  url: `/${currentPage}/${currentSubCategory}/${article}`
+                }),
+              title: articlesInCategory[article].title
+            };
+          })
+        : null;
+      backClicked = () =>
+        linkClicked({ url: `/${currentPage}/${currentSubCategory}` });
     } else if (currentSubCategory) {
       buttonText = "Ny artikkel";
       content = subCategoryContent;
-      menu = articlesInCategory;
+      onAddClicked = () =>
+        addArticle({
+          subCategory: currentSubCategory,
+          title: addForm.text.value
+        });
+      menu = articlesInCategory
+        ? Object.keys(articlesInCategory).map(article => {
+            return {
+              onClick: () =>
+                linkClicked({
+                  url: `/${currentPage}/${currentSubCategory}/${article}`
+                }),
+              title: articlesInCategory[article].title
+            };
+          })
+        : null;
+      backClicked = () => linkClicked({ url: `/${currentPage}` });
     } else if (currentPage) {
       buttonText = "Ny kategori";
       content = pageContent;
+      onAddClicked = () =>
+        addSubCategory({ page: currentPage, title: addForm.text.value });
       menu = subCategoriesInPage
         ? Object.keys(subCategoriesInPage).map(kat => {
             return {
@@ -64,10 +114,15 @@ export default connect(
           })
         : {};
     }
-    console.log(menu);
+    console.log(content);
     return (
       <OuterWrapper>
-        <SubMenu buttons={menu} placeholder={buttonText} onAddClicked />
+        <SubMenu
+          buttons={menu}
+          placeholder={buttonText}
+          onAddClicked={onAddClicked}
+          backClicked={backClicked}
+        />
         <ContentWrapper>
           {user
             ? <Button
