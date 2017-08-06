@@ -64,7 +64,7 @@ export default connect(
           })
         : {};
     }
-    console.log(menu);
+
     return (
       <ContentWrapper>
         <SubMenu buttons={menu} placeholder={buttonText} onAddClicked />
