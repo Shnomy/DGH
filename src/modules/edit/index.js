@@ -1,14 +1,14 @@
-import routed from './signals/routed';
-import editorChanged from './signals/editorChanged';
-import saveClicked from './signals/saveClicked';
-import resetClicked from './signals/resetClicked';
-import cancelClicked from './signals/cancelClicked';
-import imageSelected from './signals/imageSelected';
-import imageAdded from './signals/imageAdded';
-import imageClicked from './signals/imageClicked';
-import fieldChanged from './signals/fieldChanged';
-import closeAddImageModalClicked from './signals/closeAddImageModalClicked';
-import addImageClicked from './signals/addImageClicked';
+import routed from "./signals/routed";
+import editorChanged from "./signals/editorChanged";
+import saveClicked from "./signals/saveClicked";
+import resetClicked from "./signals/resetClicked";
+import cancelClicked from "./signals/cancelClicked";
+import imageSelected from "./signals/imageSelected";
+import imageAdded from "./signals/imageAdded";
+import imageClicked from "./signals/imageClicked";
+import fieldChanged from "./signals/fieldChanged";
+import closeAddImageModalClicked from "./signals/closeAddImageModalClicked";
+import addImageClicked from "./signals/addImageClicked";
 
 export default {
   state: {
@@ -42,7 +42,13 @@ export default {
       corners: {
         value: 0,
         defaultValue: 0
-      },
+      }
+    },
+    addForm: {
+      text: {
+        value: "",
+        defaultValue: ""
+      }
     }
   },
   signals: {
@@ -56,6 +62,6 @@ export default {
     imageClicked,
     fieldChanged,
     closeAddImageModalClicked,
-    addImageClicked,
+    addImageClicked
   }
 };
