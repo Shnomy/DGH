@@ -17,7 +17,8 @@ export default Controller({
     urls: {},
     pages: {},
     articlesInCategory: {},
-    articles: {}
+    articles: {},
+    loading: {}
   },
   modules: {
     app: app,

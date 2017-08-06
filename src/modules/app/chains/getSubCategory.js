@@ -1,4 +1,4 @@
-import { when } from "cerebral/operators";
+import { when, set } from "cerebral/operators";
 import { state } from "cerebral/tags";
 
 import getSubCategory from "../actions/getSubCategory";
@@ -8,10 +8,15 @@ export default [
   when(state`app.currentSubCategory`),
   {
     true: [
-      when(state`articleInCategory.${state`app.currentSubCategory`}`),
+      when(state`articlesInCategory.${state`app.currentSubCategory`}`),
       {
         true: [],
-        false: [getSubCategory, setSubCategory]
+        false: [
+          set(state`loading.subCategory`, true),
+          getSubCategory,
+          set(state`loading.subCategory`, false),
+          setSubCategory
+        ]
       }
     ],
     false: []
