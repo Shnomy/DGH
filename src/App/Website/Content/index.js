@@ -2,6 +2,7 @@ import React from "react";
 import { ContentWrapper } from "./elements";
 import { connect } from "cerebral/react";
 import { state, signal } from "cerebral/tags";
+import { form } from "@cerebral/forms";
 import compile from "../../../marksy";
 
 import SubMenu from "../../../common/SubMenu";
@@ -19,7 +20,11 @@ export default connect(
     subCategoryContent: state`pages.${state`app.currentPage`}.subCategories.${state`app.currentSubCategory`}.content`,
     articlesInCategory: state`articlesInCategory.${state`app.currentSubCategory`}`,
     pageContent: state`pages.${state`app.currentPage`}.content`,
-    subCategoriesInPage: state`pages.${state`app.currentPage`}.subCategories`
+    subCategoriesInPage: state`pages.${state`app.currentPage`}.subCategories`,
+
+    addSubCategory: signal`app.addSubCategory`,
+    addArticle: signal`app.addArticle`,
+    addForm: form(state`edit.addForm`)
   },
   function Content({
     user,
@@ -32,7 +37,10 @@ export default connect(
     pageContent,
     subCategoriesInPage,
 
-    linkClicked
+    linkClicked,
+    addSubCategory,
+    addArticle,
+    addForm
   }) {
     if (currentPage === "login") {
       return (
@@ -45,16 +53,31 @@ export default connect(
     let content = "";
     let menu = {};
     let buttonText = "";
+    let onAddClicked = null;
 
     if (currentArticle) {
       content = "# an article";
+      buttonText = "Ny artikkel";
+      onAddClicked = () =>
+        addArticle({
+          subCategory: currentSubCategory,
+          title: addForm.text.value
+        });
+      menu = articlesInCategory;
     } else if (currentSubCategory) {
       buttonText = "Ny artikkel";
       content = subCategoryContent;
+      onAddClicked = () =>
+        addArticle({
+          subCategory: currentSubCategory,
+          title: addForm.text.value
+        });
       menu = articlesInCategory;
     } else if (currentPage) {
       buttonText = "Ny kategori";
       content = pageContent;
+      onAddClicked = () =>
+        addSubCategory({ page: currentPage, title: addForm.text.value });
       menu = subCategoriesInPage
         ? Object.keys(subCategoriesInPage).map(kat => {
             return {
@@ -67,7 +90,11 @@ export default connect(
 
     return (
       <ContentWrapper>
-        <SubMenu buttons={menu} placeholder={buttonText} onAddClicked />
+        <SubMenu
+          buttons={menu}
+          placeholder={buttonText}
+          onAddClicked={onAddClicked}
+        />
         {user
           ? <Button
               text={"Rediger side"}

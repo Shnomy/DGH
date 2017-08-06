@@ -1,5 +1,5 @@
 import { parallel } from "cerebral";
-import { set, when } from "cerebral/operators";
+import { set } from "cerebral/operators";
 import { state, props } from "cerebral/tags";
 import { getUser } from "@cerebral/firebase/operators";
 
