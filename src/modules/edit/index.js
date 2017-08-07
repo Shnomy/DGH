@@ -52,7 +52,9 @@ export default {
     }
   },
   signals: {
-    routed,
+    editPageRouted: routed,
+    editSubCategoryRouted: routed,
+    editArticleRouted: routed,
     editorChanged,
     saveClicked,
     resetClicked,

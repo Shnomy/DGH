@@ -39,7 +39,15 @@ export default Controller({
         },
         {
           path: "/edit/:page",
-          signal: "edit.routed"
+          signal: "edit.editPageRouted"
+        },
+        {
+          path: "/edit/:page/:subCategory",
+          signal: "edit.editSubCategoryRouted"
+        },
+        {
+          path: "/edit/:page/:subCategory/:article",
+          signal: "edit.editArticleRouted"
         },
         {
           path: "/:page",

@@ -1,13 +1,24 @@
-import {state, props, string} from 'cerebral/tags';
-import {set} from 'cerebral/operators';
-import {value} from '@cerebral/firebase/operators';
-import listenForImages from '../actions/listenForImages';
+import { state, props } from "cerebral/tags";
+import { set, when } from "cerebral/operators";
+
+import editPage from "../chains/editPage";
+import editSubCategory from "../chains/editSubCategory";
+import editArticle from "../chains/editArticle";
 
 export default [
   set(state`app.edit`, true),
   set(state`edit.page`, props`page`),
-  value(string`pages.${props`page`}`),
-  set(state`edit.content`, props`value`),
-  set(state`edit.backup`, props`value`),
-  listenForImages,
+  set(state`edit.subCategory`, props`subCategory`),
+  set(state`edit.article`, props`article`),
+  when(props`artcle`),
+  {
+    true: [editArticle],
+    false: [
+      when(props`subCategory`),
+      {
+        true: [editSubCategory],
+        false: [editPage]
+      }
+    ]
+  }
 ];
