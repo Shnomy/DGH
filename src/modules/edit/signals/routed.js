@@ -8,8 +8,16 @@ import editArticle from "../chains/editArticle";
 export default [
   set(state`app.edit`, true),
   set(state`edit.page`, props`page`),
-  set(state`edit.subCategory`, props`subCategory`),
-  set(state`edit.article`, props`article`),
+  when(props`subCategory`),
+  {
+    true: [set(state`edit.subCategory`, props`subCategory`)],
+    false: [set(state`edit.subCategory`, false)]
+  },
+  when(props`article`),
+  {
+    true: [set(state`edit.article`, props`article`)],
+    false: [set(state`edit.article`, false)]
+  },
   when(props`article`),
   {
     true: [editArticle],
