@@ -7,6 +7,7 @@ import editArticle from "../chains/editArticle";
 
 export default [
   set(state`app.edit`, true),
+  set(state`app.images`, []),
   set(state`edit.page`, props`page`),
   when(props`subCategory`),
   {
