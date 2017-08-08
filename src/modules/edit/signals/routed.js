@@ -10,7 +10,7 @@ export default [
   set(state`edit.page`, props`page`),
   set(state`edit.subCategory`, props`subCategory`),
   set(state`edit.article`, props`article`),
-  when(props`artcle`),
+  when(props`article`),
   {
     true: [editArticle],
     false: [

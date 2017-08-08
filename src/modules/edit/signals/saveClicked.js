@@ -1,8 +1,21 @@
-import {set as save} from '@cerebral/firebase/operators';
-import {set} from 'cerebral/operators';
-import {string, state} from 'cerebral/tags';
+import { set, when } from "cerebral/operators";
+import { string, state } from "cerebral/tags";
+
+import saveArticle from "../actions/saveArticle";
+import saveSubCategory from "../actions/saveSubCategory";
+import savePage from "../actions/savePage";
 
 export default [
   set(state`edit.backup`, state`edit.content`),
-  save(string`pages.${state`edit.page`}`, state`edit.content`)
-]
+  when(state`edit.article`),
+  {
+    true: [saveArticle],
+    false: [
+      when(state`edit.subCategory`),
+      {
+        true: [saveSubCategory],
+        false: [savePage]
+      }
+    ]
+  }
+];
