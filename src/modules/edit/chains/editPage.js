@@ -5,8 +5,10 @@ import { value } from "@cerebral/firebase/operators";
 import listenForImagesPage from "../actions/listenForImagesPage";
 
 export default [
-  value(string`pages.${props`page`}.content`),
-  set(state`edit.content`, props`value`),
-  set(state`edit.backup`, props`value`),
+  value(string`pages.${props`page`}`),
+  set(state`edit.content`, props`value.content`),
+  set(state`edit.backup`, props`value.content`),
+  set(state`edit.title`, props`value.title`),
+  set(state`edit.noEditTitle`, true),
   listenForImagesPage
 ];
