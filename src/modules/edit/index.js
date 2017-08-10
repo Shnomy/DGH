@@ -9,6 +9,7 @@ import imageClicked from "./signals/imageClicked";
 import fieldChanged from "./signals/fieldChanged";
 import closeAddImageModalClicked from "./signals/closeAddImageModalClicked";
 import addImageClicked from "./signals/addImageClicked";
+import titleChanged from "./signals/titleChanged";
 
 export default {
   state: {
@@ -64,6 +65,7 @@ export default {
     imageClicked,
     fieldChanged,
     closeAddImageModalClicked,
-    addImageClicked
+    addImageClicked,
+    titleChanged
   }
 };

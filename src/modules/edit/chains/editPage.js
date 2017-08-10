@@ -8,7 +8,6 @@ export default [
   value(string`pages.${props`page`}`),
   set(state`edit.content`, props`value.content`),
   set(state`edit.backup`, props`value.content`),
-  set(state`edit.title`, props`value.title`),
   set(state`edit.noEditTitle`, true),
   listenForImagesPage
 ];

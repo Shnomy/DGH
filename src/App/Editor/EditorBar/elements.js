@@ -37,7 +37,6 @@ export const TitleInput = styled.input`
 `;
 
 export const StyledButton = styled(Button)`
-
   height: 60%;
   padding: 12px 20px;
   margin: 8px 8px;
