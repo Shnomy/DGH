@@ -36,6 +36,7 @@ export default connect(
     return (
       <OuterWrapper>
         <SubMenu
+          isLoggedIn={Boolean(user)}
           buttons={
             articlesInCategory
               ? Object.keys(articlesInCategory).map(article => {

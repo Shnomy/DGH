@@ -14,7 +14,8 @@ export default function SubMenu({
   buttons,
   placeholder,
   onAddClicked,
-  backClicked
+  backClicked,
+  isLoggedIn
 }) {
   const menu = Object.keys(buttons || {}).map(el => {
     return (
@@ -32,10 +33,15 @@ export default function SubMenu({
           </MenuText>
         : null}
       {menu}
-      <InputWrapper>
-        <InputText fieldPath={"edit.addForm.text"} placeholder={placeholder} />
-        <PlussIcon name={"plus"} onClick={() => onAddClicked()} />
-      </InputWrapper>
+      {isLoggedIn
+        ? <InputWrapper>
+            <InputText
+              fieldPath={"edit.addForm.text"}
+              placeholder={placeholder}
+            />
+            <PlussIcon name={"plus"} onClick={() => onAddClicked()} />
+          </InputWrapper>
+        : null}
     </OuterWrapper>
   );
 }
