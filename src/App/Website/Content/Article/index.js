@@ -38,6 +38,7 @@ export default connect(
     return (
       <OuterWrapper>
         <SubMenu
+          isLoggedIn={Boolean(user)}
           buttons={
             articlesInCategory
               ? Object.keys(articlesInCategory).map(article => {
@@ -54,6 +55,7 @@ export default connect(
           placeholder={"Ny artikkel"}
           onAddClicked={() =>
             addArticle({
+              page: currentPage,
               subCategory: currentSubCategory,
               title: addForm.text.value
             })}

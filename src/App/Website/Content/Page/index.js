@@ -34,6 +34,7 @@ export default connect(
     return (
       <OuterWrapper>
         <SubMenu
+          isLoggedIn={Boolean(user)}
           buttons={
             subCategoriesInPage
               ? Object.keys(subCategoriesInPage).map(kat => {

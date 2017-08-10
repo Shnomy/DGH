@@ -53,6 +53,7 @@ export default connect(
           placeholder={"Ny artikkel"}
           onAddClicked={() =>
             addArticle({
+              page: currentPage,
               subCategory: currentSubCategory,
               title: addForm.text.value
             })}

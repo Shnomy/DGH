@@ -13,6 +13,8 @@ import {
 export default connect(
   {
     pageName: state`edit.page`,
+    subCategory: state`edit.subCategory`,
+    article: state`edit.article`,
     title: state`edit.title`,
     noTitle: state`edit.noEditTitle`,
     saveClicked: signal`edit.saveClicked`,
@@ -27,8 +29,18 @@ export default connect(
     cancelClicked,
     titleChanged,
     title,
+    article,
+    subCategory,
     noTitle
   }) {
+    let text = pageName;
+
+    if (article) {
+      text = title ? title : "-";
+    } else if (subCategory) {
+      text = `${pageName} > ${title}`;
+    }
+
     return (
       <EditorWrapper>
         <TextWrapper>
@@ -39,7 +51,7 @@ export default connect(
             placeholder={pageName}
           />
           <PageText>
-            {pageName}
+            {text}
           </PageText>
         </TextWrapper>
         <ButtonWrapper>
