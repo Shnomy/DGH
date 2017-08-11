@@ -18,8 +18,13 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "deploy": "npm run build && firebase deploy",
+    "build:prod": "REACT_APP_ENV='prod' react-scripts build",
+    "deploy": "npm run build && firebase use dev && firebase deploy",
+    "deploy:prod": "npm run build:prod && firebase use prod && firebase deploy",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "cross-env": "^5.0.5"
   }
 }

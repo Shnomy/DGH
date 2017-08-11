@@ -1,5 +1,5 @@
 import { set, when } from "cerebral/operators";
-import { string, state } from "cerebral/tags";
+import { state } from "cerebral/tags";
 
 import saveArticle from "../actions/saveArticle";
 import saveSubCategory from "../actions/saveSubCategory";
