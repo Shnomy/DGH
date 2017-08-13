@@ -1,16 +1,16 @@
 import React from "react";
-import { ContentWrapper, OuterWrapper } from "../elements";
+import { ContentWrapper, OuterWrapper, SubMenu } from "../elements";
 import { connect } from "cerebral/react";
 import { state, signal } from "cerebral/tags";
 import { form } from "@cerebral/forms";
 import compile from "../../../../marksy";
 
-import SubMenu from "../../../../common/SubMenu";
 import Button from "../../../../components/Button";
 
 export default connect(
   {
     user: state`app.user`,
+    showMenu: state`app.showMenu`,
     currentPage: state`app.currentPage`,
     currentSubCategory: state`app.currentSubCategory`,
     currentArticle: state`app.currentArticle`,
@@ -19,11 +19,13 @@ export default connect(
     articleContent: state`articles.${state`app.currentArticle`}.content`,
 
     linkClicked: signal`app.linkClicked`,
+    contentClicked: signal`app.contentClicked`,
     addArticle: signal`app.addArticle`,
     addForm: form(state`edit.addForm`)
   },
   function Article({
     user,
+    showMenu,
     currentPage,
     currentSubCategory,
     currentArticle,
@@ -32,12 +34,14 @@ export default connect(
     articleContent,
 
     linkClicked,
+    contentClicked,
     addArticle,
     addForm
   }) {
     return (
       <OuterWrapper>
         <SubMenu
+          showMenu={showMenu}
           isLoggedIn={Boolean(user)}
           buttons={
             articlesInCategory
@@ -62,7 +66,7 @@ export default connect(
           backClicked={() =>
             linkClicked({ url: `/${currentPage}/${currentSubCategory}` })}
         />
-        <ContentWrapper>
+        <ContentWrapper onClick={() => contentClicked()}>
           {user
             ? <Button
                 text={"Rediger artikkel"}

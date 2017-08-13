@@ -15,6 +15,7 @@ import imageClicked from "./signals/imageClicked";
 
 import addSubCategory from "./signals/addSubCategory";
 import addArticle from "./signals/addArticle";
+import contentClicked from "./signals/contentClicked";
 
 export default {
   state: {
@@ -39,6 +40,7 @@ export default {
     redirect,
 
     addSubCategory,
-    addArticle
+    addArticle,
+    contentClicked
   }
 };

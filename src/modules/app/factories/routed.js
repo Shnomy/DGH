@@ -8,6 +8,7 @@ import getData from "../chains/getData";
 export default function routed(cont = []) {
   return [
     set(state`app.edit`, false),
+    set(state`app.showMenu`, true),
     cont,
     parallel([
       getData,

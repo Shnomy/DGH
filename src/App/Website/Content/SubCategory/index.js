@@ -1,16 +1,16 @@
 import React from "react";
-import { ContentWrapper, OuterWrapper } from "../elements";
+import { ContentWrapper, OuterWrapper, SubMenu } from "../elements";
 import { connect } from "cerebral/react";
 import { state, signal } from "cerebral/tags";
 import { form } from "@cerebral/forms";
 import compile from "../../../../marksy";
 
-import SubMenu from "../../../../common/SubMenu";
 import Button from "../../../../components/Button";
 
 export default connect(
   {
     user: state`app.user`,
+    showMenu: state`app.showMenu`,
     currentPage: state`app.currentPage`,
     currentSubCategory: state`app.currentSubCategory`,
 
@@ -19,10 +19,12 @@ export default connect(
 
     linkClicked: signal`app.linkClicked`,
     addArticle: signal`app.addArticle`,
+    contentClicked: signal`app.contentClicked`,
     addForm: form(state`edit.addForm`)
   },
   function SubCategory({
     user,
+    showMenu,
     currentPage,
     currentSubCategory,
 
@@ -30,12 +32,14 @@ export default connect(
     articlesInCategory,
 
     linkClicked,
+    contentClicked,
     addArticle,
     addForm
   }) {
     return (
       <OuterWrapper>
         <SubMenu
+          showMenu={showMenu}
           isLoggedIn={Boolean(user)}
           buttons={
             articlesInCategory
@@ -59,7 +63,7 @@ export default connect(
             })}
           backClicked={() => linkClicked({ url: `/${currentPage}` })}
         />
-        <ContentWrapper>
+        <ContentWrapper onClick={() => contentClicked()}>
           {user
             ? <Button
                 text={"Rediger kategori"}

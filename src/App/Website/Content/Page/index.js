@@ -1,16 +1,16 @@
 import React from "react";
-import { ContentWrapper, OuterWrapper } from "../elements";
+import { ContentWrapper, OuterWrapper, SubMenu } from "../elements";
 import { connect } from "cerebral/react";
 import { state, signal } from "cerebral/tags";
 import { form } from "@cerebral/forms";
 import compile from "../../../../marksy";
 
-import SubMenu from "../../../../common/SubMenu";
 import Button from "../../../../components/Button";
 
 export default connect(
   {
     user: state`app.user`,
+    showMenu: state`app.showMenu`,
     currentPage: state`app.currentPage`,
 
     pageContent: state`pages.${state`app.currentPage`}.content`,
@@ -18,22 +18,26 @@ export default connect(
 
     linkClicked: signal`app.linkClicked`,
     addSubCategory: signal`app.addSubCategory`,
+    contentClicked: signal`app.contentClicked`,
     addForm: form(state`edit.addForm`)
   },
   function Content({
     user,
+    showMenu,
     currentPage,
 
     pageContent,
     subCategoriesInPage,
 
     linkClicked,
+    contentClicked,
     addSubCategory,
     addForm
   }) {
     return (
       <OuterWrapper>
         <SubMenu
+          showMenu={showMenu}
           isLoggedIn={Boolean(user)}
           buttons={
             subCategoriesInPage
@@ -50,7 +54,7 @@ export default connect(
           onAddClicked={() =>
             addSubCategory({ page: currentPage, title: addForm.text.value })}
         />
-        <ContentWrapper>
+        <ContentWrapper onClick={() => contentClicked()}>
           {user
             ? <Button
                 text={"Rediger side"}

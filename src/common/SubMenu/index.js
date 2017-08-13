@@ -15,7 +15,8 @@ export default function SubMenu({
   placeholder,
   onAddClicked,
   backClicked,
-  isLoggedIn
+  isLoggedIn,
+  className
 }) {
   const menu = Object.keys(buttons || {}).map(el => {
     return (
@@ -25,7 +26,7 @@ export default function SubMenu({
     );
   });
   return (
-    <OuterWrapper>
+    <OuterWrapper className={className}>
       {backClicked
         ? <MenuText onClick={backClicked}>
             <BackIcon name={"arrow-left"} />

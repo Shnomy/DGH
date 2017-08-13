@@ -2,10 +2,9 @@ import styled from "styled-components";
 import FontAwesome from "react-fontawesome";
 
 export const OuterWrapper = styled.div`
-  max-width: 250px;
   height: 100%;
   background-color: #f7f7f7;
-  flex: 1 1 auto;
+  flex: 1;
   min-height: 640px;
   border-right: 1px solid black;
   padding: 10px;
