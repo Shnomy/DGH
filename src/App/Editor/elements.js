@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: grid;
@@ -8,16 +8,14 @@ export const Wrapper = styled.div`
   bottom: 0;
   right: 0;
   margin: 0;
-  overflow: hidden;
-  grid-template-areas: "bar bar bar"
-                       "prev edit up"
-                       "prev edit list";
+
+  grid-template-areas: "bar bar bar" "prev edit up" "prev edit list";
   grid-template-columns: 800px 1fr 200px;
   grid-template-rows: 75px 200px 1fr;
 `;
 
 export const Faded = styled.div`
-  background-color: rgba(0,0,0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 0;
   left: 0;

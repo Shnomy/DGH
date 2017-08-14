@@ -8,6 +8,8 @@ export const OuterWrapper = styled.div`
   flex: 1 1 auto;
   min-height: 640px;
   border-right: 1px solid black;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
   padding: 10px;
   font-family: sans-serif;
 `;

@@ -12,15 +12,15 @@ export const EditorWrapper = styled.div`
 export const ButtonWrapper = styled.div`
   flex: 1;
   align-items: baseline;
-  line-height: 75px;
+  line-height: 77px;
   text-align: right;
-  padding-right: 25px;
+  padding-right: 8px;
 `;
 
 export const TextWrapper = styled.div`
   flex: 1;
   align-items: baseline;
-  line-height: 75px;
+  line-height: 72px;
 `;
 
 export const PageText = styled(TextMedium)`
@@ -39,7 +39,12 @@ export const TitleInput = styled.input`
 export const StyledButton = styled(Button)`
   height: 60%;
   padding: 12px 20px;
+  padding-top: 15px;
   margin: 8px 8px;
   border: 1px solid #ccc;
   border-radius: 4px
+  line-height: 80px;
+  :hover {
+    border-bottom: 2px solid black;
+  }
 `;
