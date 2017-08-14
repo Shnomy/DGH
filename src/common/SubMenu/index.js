@@ -1,4 +1,6 @@
 import React from "react";
+import { connect } from "cerebral/react";
+import { signal } from "cerebral/tags";
 
 import InputText from "../../common/InputText";
 import SubMenuItem from "../../components/SubMenuItem";
@@ -10,39 +12,52 @@ import {
   BackIcon
 } from "./elements";
 
-export default function SubMenu({
-  buttons,
-  placeholder,
-  onAddClicked,
-  backClicked,
-  isLoggedIn,
-  className
-}) {
-  const menu = Object.keys(buttons || {}).map(el => {
+export default connect(
+  {
+    linkClicked: signal`app.linkClicked`
+  },
+  function SubMenu({
+    buttons,
+    placeholder,
+    onAddClicked,
+    backClicked,
+    isLoggedIn,
+    className,
+    linkClicked,
+    title
+  }) {
+    const menu = buttons
+      ? buttons.map(el => {
+          return (
+            <SubMenuItem
+              key={el.id}
+              current={el.current}
+              onClick={() => linkClicked({ url: el.url })}
+            >
+              {el.title}
+            </SubMenuItem>
+          );
+        })
+      : null;
+
     return (
-      <SubMenuItem key={el} onClick={buttons[el].onClick}>
-        {buttons[el].title}
-      </SubMenuItem>
+      <OuterWrapper className={className}>
+        {title
+          ? <SubMenuItem isTitle onClick={() => linkClicked({ url: "/" })}>
+              {title}
+            </SubMenuItem>
+          : null}
+        {menu}
+        {isLoggedIn
+          ? <InputWrapper>
+              <InputText
+                fieldPath={"edit.addForm.text"}
+                placeholder={placeholder}
+              />
+              <PlussIcon name={"plus"} onClick={() => onAddClicked()} />
+            </InputWrapper>
+          : null}
+      </OuterWrapper>
     );
-  });
-  return (
-    <OuterWrapper className={className}>
-      {backClicked
-        ? <MenuText onClick={backClicked}>
-            <BackIcon name={"arrow-left"} />
-            {"Tilbake"}
-          </MenuText>
-        : null}
-      {menu}
-      {isLoggedIn
-        ? <InputWrapper>
-            <InputText
-              fieldPath={"edit.addForm.text"}
-              placeholder={placeholder}
-            />
-            <PlussIcon name={"plus"} onClick={() => onAddClicked()} />
-          </InputWrapper>
-        : null}
-    </OuterWrapper>
-  );
-}
+  }
+);

@@ -16,7 +16,11 @@ export default connect(
   function Content({ content, showMenu }) {
     return (
       <ContentPageWrapper>
-        <SubMenu buttons={content.menu} show={showMenu} />
+        <SubMenu
+          title={content.menuTitle}
+          buttons={content.menu}
+          show={showMenu}
+        />
         <ContentWrapper>
           {compile(content.text || "").tree}
         </ContentWrapper>
