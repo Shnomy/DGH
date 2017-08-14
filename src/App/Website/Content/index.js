@@ -1,35 +1,26 @@
 import React from "react";
-import { ContentWrapper } from "./elements";
+import { SubMenu, ContentWrapper, ContentPageWrapper } from "./elements";
 import { connect } from "cerebral/react";
 import { state } from "cerebral/tags";
+import compile from "../../../marksy";
 
-import Article from "./Article";
-import SubCategory from "./SubCategory";
-import Page from "./Page";
+import getContent from "../../../computeds/getContent";
 
 import Login from "../Login";
 
 export default connect(
   {
-    currentPage: state`app.currentPage`,
-    currentSubCategory: state`app.currentSubCategory`,
-    currentArticle: state`app.currentArticle`
+    content: getContent,
+    showMenu: state`app.showMenu`
   },
-  function Content({ currentPage, currentSubCategory, currentArticle }) {
-    if (currentPage === "login") {
-      return (
+  function Content({ content, showMenu }) {
+    return (
+      <ContentPageWrapper>
+        <SubMenu buttons={content.menu} show={showMenu} />
         <ContentWrapper>
-          <Login />
+          {compile(content.text || "").tree}
         </ContentWrapper>
-      );
-    }
-
-    if (currentArticle) {
-      return <Article />;
-    } else if (currentSubCategory) {
-      return <SubCategory />;
-    } else if (currentPage) {
-      return <Page />;
-    }
+      </ContentPageWrapper>
+    );
   }
 );
