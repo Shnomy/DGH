@@ -1,13 +1,16 @@
 import styled from "styled-components";
 
 export const OuterWrapper = styled.div`
-  width: 100%;
   height: 45px;
   background-color: #b5582a;
   color: #f7f7f7;
   line-height: 45px;
   padding-left: 10px;
+<<<<<<< HEAD
   margin-bottom: 10px;
+=======
+  margin: 10px;
+>>>>>>> c2cc21ced9cef30b9bbbb998e3f7a339fe16c82c
   cursor: pointer;
   font-family: sans-serif;
   border-radius: 3px;
