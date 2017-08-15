@@ -1,6 +1,9 @@
-export default function addSubCategory({ props, firebase }) {
-  return firebase.push(`pages.${props.page}.subCategories`, {
-    title: props.title,
-    content: `# ${props.title}`
+export default function addSubCategory({ props, firebase, state }) {
+  const page = state.get("app.currentPage");
+  const title = state.get("edit.addForm.text.value");
+
+  return firebase.push(`pages.${page}.subCategories`, {
+    title: title,
+    content: `# ${title}`
   });
 }

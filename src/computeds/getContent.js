@@ -33,7 +33,8 @@ export default compute(
       const menuTitle = pages
         ? pages.subCategories[currentSubCategory].title
         : false;
-      return { text, menu, menuTitle };
+      const editURL = `/edit/${currentPage}/${currentSubCategory}/${currentArticle}`;
+      return { text, menu, menuTitle, editURL, addArticle: true };
     } else if (currentSubCategory) {
       const text = pages
         ? pages.subCategories[currentSubCategory].content
@@ -50,7 +51,8 @@ export default compute(
       const menuTitle = pages
         ? pages.subCategories[currentSubCategory].title
         : false;
-      return { text, menu, menuTitle };
+      const editURL = `/edit/${currentPage}/${currentSubCategory}`;
+      return { text, menu, menuTitle, editURL, addArticle: true };
     } else {
       const text = pages ? pages.content : false;
       const menu = pages
@@ -65,7 +67,8 @@ export default compute(
           : false
         : false;
       const menuTitle = pages ? pages.title : false;
-      return { text, menu, menuTitle };
+      const editURL = `/edit/${currentPage}`;
+      return { text, menu, menuTitle, editURL };
     }
   }
 );
