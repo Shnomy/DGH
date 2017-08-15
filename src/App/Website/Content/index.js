@@ -11,9 +11,18 @@ import Login from "../Login";
 export default connect(
   {
     content: getContent,
+    currentPage: state`app.currentPage`,
     showMenu: state`app.showMenu`
   },
-  function Content({ content, showMenu }) {
+  function Content({ content, showMenu, currentPage }) {
+    if (currentPage === "login") {
+      return (
+        <ContentPageWrapper>
+          <Login />
+        </ContentPageWrapper>
+      );
+    }
+
     return (
       <ContentPageWrapper>
         <SubMenu

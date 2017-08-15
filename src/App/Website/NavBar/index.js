@@ -6,37 +6,58 @@ import { state, signal } from "cerebral/tags";
 export default connect(
   {
     currentPage: state`app.currentPage`,
-    redirect: signal`app.redirect`
+    menuClicked: signal`app.menuClicked`,
+    toggleMenu: signal`app.toggleMenu`
   },
-  function NavBar({ currentPage, redirect }) {
+  function NavBar({ currentPage, menuClicked, toggleMenu }) {
     return (
       <Wrapper>
         <NavBarItemStyled
-          onClick={() => redirect({ url: "/" })}
+          onClick={
+            currentPage === "forside"
+              ? () => toggleMenu()
+              : () => menuClicked({ url: "/" })
+          }
           icon={"home"}
           text={" Forside"}
           current={currentPage === "forside"}
         />
         <NavBarItemStyled
-          onClick={() => redirect({ url: "/bater" })}
+          onClick={
+            currentPage === "bater"
+              ? () => toggleMenu()
+              : () => menuClicked({ url: "/bater" })
+          }
           icon={"ship"}
           text={" Båter"}
           current={currentPage === "bater"}
         />
         <NavBarItemStyled
-          onClick={() => redirect({ url: "/mobler" })}
+          onClick={
+            currentPage === "mobler"
+              ? () => toggleMenu()
+              : () => menuClicked({ url: "/mobler" })
+          }
           icon={"legal"}
           text={" Møbler"}
           current={currentPage === "mobler"}
         />
         <NavBarItemStyled
-          onClick={() => redirect({ url: "/dorVindu" })}
+          onClick={
+            currentPage === "dorVindu"
+              ? () => toggleMenu()
+              : () => menuClicked({ url: "/dorVindu" })
+          }
           icon={"windows"}
           text={" Dør/Vindu"}
           current={currentPage === "dorVindu"}
         />
         <NavBarItemStyled
-          onClick={() => redirect({ url: "/provSelv" })}
+          onClick={
+            currentPage === "provSelv"
+              ? () => toggleMenu()
+              : () => menuClicked({ url: "/provSelv" })
+          }
           icon={"pencil"}
           text={" Prøv selv!"}
           current={currentPage === "provSelv"}

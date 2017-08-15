@@ -4,13 +4,7 @@ import { signal } from "cerebral/tags";
 
 import InputText from "../../common/InputText";
 import SubMenuItem from "../../components/SubMenuItem";
-import {
-  OuterWrapper,
-  MenuText,
-  InputWrapper,
-  PlussIcon,
-  BackIcon
-} from "./elements";
+import { OuterWrapper, InputWrapper, PlussIcon } from "./elements";
 
 export default connect(
   {

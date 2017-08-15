@@ -16,6 +16,8 @@ import imageClicked from "./signals/imageClicked";
 import addSubCategory from "./signals/addSubCategory";
 import addArticle from "./signals/addArticle";
 import contentClicked from "./signals/contentClicked";
+import menuClicked from "./signals/menuClicked";
+import toggleMenu from "./signals/toggleMenu";
 
 export default {
   state: {
@@ -41,6 +43,8 @@ export default {
 
     addSubCategory,
     addArticle,
-    contentClicked
+    contentClicked,
+    menuClicked,
+    toggleMenu
   }
 };
