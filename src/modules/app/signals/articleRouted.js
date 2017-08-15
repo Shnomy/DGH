@@ -5,6 +5,7 @@ import { state, props } from "cerebral/tags";
 export default [
   routed([
     set(state`app.currentPage`, props`page`),
+    set(state`app.showMenu`, false),
     set(state`app.currentSubCategory`, props`subCategory`),
     set(state`app.currentArticle`, props`article`)
   ])
